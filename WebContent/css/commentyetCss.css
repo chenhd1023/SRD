@@ -1,0 +1,38 @@
+body{
+	background-color: rgb(204,233,239);
+}
+.header{
+	padding-top: 50px;
+	padding-bottom: 5px; 
+	min-width: 750px;
+	background-color: #FFFFFF;
+}
+.icon>img{
+	width: 70%;
+}
+.object{
+	margin-top: 30px;
+}
+.object-item{
+	background-color: rgb(142,201,234);
+	border-radius: 20px;
+	box-shadow: 4px 4px 6px 4px rgba(70%,70%,70%,.3);
+	margin: 0px 0px 20px;
+	text-decoration: none;
+	text-align: center; 
+}
+.object-item>img{
+	padding: 20px;
+}
+.object-item>div:nth-child(2)>p{
+	padding-top:10px;
+	color: black;
+	font-size: 3vw;
+}
+.object-item>div:nth-child(2)>p:nth-child(1){
+	color: rgb(234,85,20);
+	font-weight: bold;
+}
+.object-item>div:nth-child(3){
+	padding-top: 20px;
+}

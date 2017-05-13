@@ -1,0 +1,67 @@
+.person>div>img{
+	background-color: white;
+	padding:5px;
+	box-shadow: 1px 1px gray;
+	border-radius: 200px;
+}
+#information{
+	margin-top: -0.5em;
+	width: 35%;
+}
+#informationblock{
+	border-width: 5px 0 5px;
+	border-style: solid;
+	border-color: gray;
+}
+#information>p{
+	font-size: 2vw;
+	padding:0.5em 0 0.5em;
+	width: 100%;
+}
+#informationblock>a{
+	text-decoration: none;
+	font-size: 2vw;	
+}
+#informationblock>a>p{
+	padding:0.5em 0 0.5em;
+}
+#informationblock>a>p:hover{
+	opacity: 0.5;
+}
+.productRow {
+	text-align: center;
+}
+.productRow>div {
+	position: relative;
+	vertical-align: middle;
+	border-style: solid;
+	border-color: #C4E6F5;
+	border-width: 10px;
+}
+.productRow>div:hover .producttext{
+	display: block;
+}
+.producttext{
+	width: 100%;
+	height: 100%;
+	position: absolute;
+	top: 0;
+	left: 0;
+	text-align: center;
+	color: white;
+	background-color: rgba(0,0,0, 0.7);
+	display: none;
+}
+.producttext>p{
+	text-align: center;
+	line-height: 25px;
+}
+.content{
+	margin-top: 45px;
+}
+.more{
+	float: right;
+}
+.more>a{
+	text-decoration: none;
+}

@@ -1,0 +1,13 @@
+body{
+	background:url(../img/signup/success.svg) center;
+	background-color: rgb(192,231,255);
+	background-repeat: no-repeat;
+}
+.home{
+	margin-top: 30em;
+	margin-bottom: 10em;
+	text-align: center;
+}
+.home>a>img{
+	height: 3em;
+}

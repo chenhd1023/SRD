@@ -1,0 +1,90 @@
+body{
+	background-color: rgb(192,231,255);
+	min-width: 50em;
+}
+.puzzle1{
+	margin-top: 2em;
+	height: 8em;
+}
+.puzzle1>img{
+	z-index: -1;
+	height: 8em;
+}
+.puzzle1>h3{
+	z-index: 1;
+	margin-top:-3.4em;
+	margin-left: 1.2em;
+}
+.puzzle2{
+	margin-top: 2em;
+	height: 8em;
+}
+.puzzle2>img{
+	z-index: -1;
+	height: 8em;
+}
+.puzzle2>h3{
+	z-index: 1;
+	margin-top:-3.4em;
+	margin-left: 1.2em;
+	font-weight: bolder;
+}
+.puzzle3{
+	margin-top: 2em;
+	height: 8em;
+}
+.puzzle3>img{
+	z-index: -1;
+	height: 8em;
+}
+.puzzle3>h3{
+	z-index: 1;
+	margin-top:-3.4em;
+	margin-left: 1.2em;
+}
+.title{
+	margin-top: 3em;
+}
+.title>img{
+	margin-left: 10em;
+	height: 5em;
+}
+.title>h2{
+	font-weight: bolder;
+}
+.input{
+	text-align: center;
+	margin-top: 3em;
+}
+.input>div{
+	left: -1em;
+}
+.button{
+	margin-top: 0.2em;
+	text-align: center;
+	width: 5em;
+}
+.button>a{
+	text-decoration: none;
+}
+.button>a>h3{
+	border-radius: 10px 10px;
+	background-color: #008edb;
+	color: white;
+	width: 5em;
+	padding: 0.3em;
+	margin: -0.3em;
+}
+.button>a>h3:hover{
+	border-radius: 10px 10px;
+	background-color: #80d2ff;
+	color: white;
+	width: 5em;
+	padding: 0.3em;
+	margin: -0.3em;
+}
+
+.unreceive>a>h3{
+
+	color: black;
+}

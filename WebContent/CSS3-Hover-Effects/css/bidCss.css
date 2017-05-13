@@ -1,0 +1,165 @@
+.img{
+	margin-top: 70px;
+	text-align: center;
+}
+.img>img{
+	border:2px solid rgb(184,221,244);
+}
+.name{
+	margin-top: 70px;
+}
+.name>h1{
+	position: absolute;
+}
+.bid{
+	left: 120px;
+	margin-top: 280px;
+	min-width: 100px;
+}
+.bid>p{
+	color: black;
+	text-decoration: none;
+	font-size: 16px;
+	background-color: rgb(149,204,244);
+	padding: 10px;
+	margin: -10px;
+	cursor: pointer;
+}
+
+#dialog{
+	position: fixed;
+	top:0px;
+	left: 0px;
+	width: 100%;
+	height: 100%;
+	margin:0px;
+	background-color: #000000;
+	z-index: 1;
+	text-align: center;
+}
+#msg{  
+	position:absolute;
+	top:100px;
+	background-color:rgb(183,233,249);
+	width:400px;
+	z-index:3;
+	border:30px solid transparent;
+}
+#msg>p,input{
+	margin-top: 30px;
+}
+#msg>i{
+	position: absolute;
+	cursor: pointer;
+}
+.prices{
+	margin-top:30px;
+}
+.number{
+	min-width: 100px;
+}
+.number>div{
+	margin-top: 40px;
+	text-align: center;
+}
+.number>div>h5{
+	padding-top: 50px;
+}
+.reward{
+	text-align: center;
+	position: relative;
+	display: block;
+	min-width: 100px;
+}
+.reward>img{
+	position: absolute;
+	z-index: -1;
+	width: 30px;
+	top: -0.2em;
+	left: 7.2em;
+}
+.reward>div>h5{
+	padding-top: 50px;
+}
+.price{
+	text-align: center;
+	position: relative;
+	display: block;
+	min-width: 100px;
+}
+.price>img{
+	position: absolute;
+	z-index: -1;
+	width: 30px;
+	top: -0.2em;
+	left: 7.2em;
+}
+.price>div>h5{
+	padding-top: 50px;
+}
+.timeup{
+	text-align: center;
+	position: relative;
+	display: block;
+	min-width: 100px;
+}
+.timeup>img{
+	position: absolute;
+	z-index: -1;
+	width: 45px;
+	top: -0.2em;
+	left: 6.6em;
+}
+.timeup>div>h5{
+	padding-top: 50px;
+}
+.tear{
+	text-align: center;
+	position: relative;
+	display: block;
+	min-width: 100px;
+}
+.tear>img{
+	position: absolute;
+	z-index: -1;
+	width: 40px;
+	top: -0.2em;
+	left: 6.9em;
+}
+
+.tear>div>h5{
+	margin-top: 60px;
+	margin-left: 85px;
+	width: 30px;
+	background-color: rgb(251,176,59);
+	cursor: pointer;
+}
+#dialog2{
+	position: fixed;
+	top:0px;
+	left: 0px;
+	width: 100%;
+	height: 100%;
+	margin:0px;
+	background-color: #000000;
+	z-index: 1;
+	text-align: center;
+}
+#msg2 {  
+	position:absolute;
+	top:300px;
+	background-color:rgb(183,233,249);
+	width:400px;
+	z-index:3;
+	border:30px solid transparent;
+}
+#msg2>p{
+	margin-top: 30px;
+}
+#msg2>i{
+	position: absolute;
+	cursor: pointer;
+}
+#tearconfirm{
+	text-align: center;
+}

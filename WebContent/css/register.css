@@ -1,0 +1,75 @@
+		body{
+			background-image: url('../img/bg.png');
+			background-size: cover;
+		}
+		.container {
+			padding-right: 15px;
+			padding-left: 15px;
+			margin-right: auto;
+			margin-left: auto;
+		}
+		@media (min-width: 768px) {
+			.container {
+				width: 750px;
+				}
+		}
+		@media (min-width: 992px) {
+			.container {
+				width: 970px;
+				}
+		}
+		@media (min-width: 1200px) {
+			.container {
+				width: 1170px;
+				}
+		}
+		.container-fluid {
+			padding-right: 15px;
+			padding-left: 15px;
+			margin-right: auto;
+			margin-left: auto;
+		}
+		.row {
+			margin-right: -15px;
+			margin-left: -15px;
+		}
+		label{
+			font-weight: bold;
+			color: #0B346E;
+		}
+		h1{
+			font-weight: bold;
+			color: white;
+			text-shadow:3px 3px 3px #0B346E;
+		}
+		.button {
+			border-top: 1px solid #96d1f8;
+			background: #3296d9;
+			background: -webkit-gradient(linear, left top, left bottom, from(#285d80), to(#3296d9));
+			background: -webkit-linear-gradient(top, #285d80, #3296d9);
+			background: -moz-linear-gradient(top, #285d80, #3296d9);
+			background: -ms-linear-gradient(top, #285d80, #3296d9);
+			background: -o-linear-gradient(top, #285d80, #3296d9);
+			padding: 7px 14px;
+			-webkit-border-radius: 9px;
+			-moz-border-radius: 9px;
+			border-radius: 9px;
+			-webkit-box-shadow: rgba(0,0,0,1) 0 1px 0;
+			-moz-box-shadow: rgba(0,0,0,1) 0 1px 0;
+			box-shadow: rgba(0,0,0,1) 0 1px 0;
+			text-shadow: rgba(0,0,0,.4) 0 1px 0;
+			color: white;
+			font-size: 14px;
+			font-family: Georgia, serif;
+			text-decoration: none;
+			vertical-align: middle;
+		}
+		.button:hover {
+			border-top-color: #2aa8f7;
+			background: #2aa8f7;
+			color: #ffffff;
+		}
+		.button:active {
+			border-top-color: #416d8a;
+			background: #416d8a;
+		}

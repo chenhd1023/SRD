@@ -1,0 +1,317 @@
+#content{
+	margin-top: 50px;
+	max-width: 1200px;
+	min-width: 600px;
+	margin: 0 auto;
+}
+.types{
+	height: 20em;
+	padding-top: 3em;
+}
+.lifecycle{
+	text-align : center;
+}
+.lifecycle>div>img{
+	vertical-align : middle;
+}
+.lifecycleimg>a>img:hover{
+	opacity: 0.5;
+}
+.hot{
+	background-color: rgb(175,222,235);
+	padding-bottom: 2em;
+}
+.hottitle{
+	height: 12em;
+}
+.hottitle>img{
+	padding-top: 1em;
+	height: 100%;
+}
+.hottitle>h2{
+	color: black;
+	font-weight: bolder;
+	padding-top: 1.4em;
+}
+.hotactivities{
+	text-align: center;
+	padding-top: 1em;
+	padding-bottom: 2em;
+	margin-left: 6em;
+}
+.hotactivity{
+	text-align: center;
+	margin-left: 5em;
+	background-color: white;
+	border-radius: 10px 10px;
+}
+.hotactivity>a{
+	text-decoration: none;
+}
+.hotactivity>a>h2:hover{
+	background-color: #ebebeb;
+}
+.hotactivity>a>h2{
+	color: black;
+}
+.hotactivityimg{
+	height: 12em;
+	overflow: hidden;
+}
+.hotactivityimg>a>img{
+	padding-bottom: 1em;
+	height: 100%;
+}
+.hotactivityimg>a>img:hover{
+	opacity: 0.5;
+}
+.hotgoods{
+	padding-top: 1em;
+	text-align: center;
+	overflow: hidden;
+}
+.hotgood{
+	text-align: center;
+	height: 22em;
+	margin-left: 3em;
+	background-color: white;
+	border-radius: 10px 10px;
+}
+.hotgood>a{
+	text-decoration: none;
+}
+.hotgood>a>h3{
+	color: black;
+}
+.hotgood>a>h3:hover{
+	background-color: #ebebeb;
+}
+.hotgoodimg{
+	height: 16em;
+	overflow: hidden;
+}
+.hotgoodimg>a>img{
+	height: 100%;
+	padding-bottom: 2em;
+}
+.hotgoodimg>a>img:hover{
+	opacity: 0.5;
+}
+.share{
+	background-image: url(../img/homepage/sharebackground.svg);
+}
+.sharetitle{
+	height: 12em;
+}
+.sharetitle>img{
+	padding-top: 1em;
+	height: 100%;
+}
+.sharetitle>h2{
+	color: black;
+	font-weight: bolder;
+	padding-top: 1.4em;
+}
+.shareitems{
+	padding: 3em;
+	margin-left: 4em;
+}
+.sharecontent{
+	background-image: url(../img/homepage/sharecontent.svg);
+	background-repeat: no-repeat;
+	height: 40em;
+	text-align: center;
+}
+.shareinside{
+	padding-top: 1.5em;
+}
+.shareimg{
+	height: 10em;
+	border-radius:100%;
+	overflow: hidden;
+}
+.shareimg>img{
+	height: 100%;
+	margin-left: -3em;
+}
+.shareid{
+	padding-top: 3em;
+}
+.shareid>a{
+	text-decoration: none;
+}
+.shareid>a>h3{
+	color: black
+}
+.sharegood{
+	position: absolute;
+	text-align: left;
+	margin-top: 10em;
+	padding-left: 2em;
+}
+.sharegood>a{
+	text-decoration: none;
+}
+.sharegood>a>h3{
+	color: black;
+}
+.sharegoodname{
+	height: 22em;
+	width: 22em;
+	overflow: hidden;
+}
+.sharegoodname>a>img{
+	width: 100%;
+}
+.sharegoodname>a>img:hover{
+	opacity: 0.5;
+}
+.wanted{
+	background-image: url(../img/homepage/wantedbg.svg);
+	background-repeat: no-repeat;
+	background-size: cover;
+	text-align: center;
+}
+.wantedtitle{
+	height: 12em;
+}
+.wantedtitle>img{
+	padding-top: 1em;
+	height: 100%;
+}
+.wantedtitle>h2{
+	color: black;
+	text-align: left;
+	font-weight: bolder;
+	padding-top: 1.4em;
+}
+.wanteditems{
+	padding: 3em;
+	text-align: center;
+}
+.wantedbg{
+	background-color: white;
+	height: 25em;
+	border-radius: 30px 30px 30px 30px;
+	margin-left: 5em;
+}
+.wantedbg>div{
+	height: 23em;
+	overflow: hidden;
+}
+.wantedcontent{
+	text-align: center;
+}
+.wantedcontent>a{
+	text-decoration: none;
+}
+.wantedcontent>a>h2{
+	color: black;
+	font-weight: bolder;
+}
+.wantedcontent>div{
+	height: 15em;
+	background-color: pink;
+	border-radius: 50px;
+}
+.wantedcontent>div>h3:first-child{
+	padding-top:2em;
+	color: black;
+	font-weight: bolder;
+}
+.wantedcontent>div>h3:nth-child(2){
+	color: black;
+	font-weight: bolder;
+}
+.wantedimg{
+	padding-top: 2em;
+	text-align: center;
+	height: 21em;
+	margin-left: 4em;
+	overflow: hidden;
+}
+.wantedimg>a>img{
+	width: 100%;
+}
+.wantedimg>a>img:hover{
+	opacity: 0.5;
+}
+.wantedimg>button{
+	margin-top:1.2em;
+}
+.wantedpeople{
+	text-align: right;
+}
+.wantedpeople>img{
+	width:100%;
+}
+.donate{
+	background-image: url(../img/homepage/donatebackground.svg);
+	background-repeat: no-repeat;
+	background-size: cover;
+	text-align: center;
+}
+.donatetitle{
+	height: 12em;
+}
+.donatetitle>img{
+	padding-top: 1em;
+	height: 100%;
+}
+.donatetitle>h2{
+	color: black;
+	text-align: left;
+	font-weight: bolder;
+	padding-top: 1.4em;
+}
+.donateitems{
+	padding: 3em;
+	text-align: center;
+}
+.donatebg{
+	padding-right: 3em;
+	background-color: pink;
+	height: 25em;
+	border-radius: 30px 30px 30px 30px;
+}
+.donatename{
+	height: 18em;
+	overflow: hidden;
+}
+.donatename>a{
+	text-decoration: none;
+}
+.donatename>a>h2{
+	color: black;
+	font-weight: bolder;
+}
+.donatename>a>img{
+	margin-left: 1em;
+	width: 100%;
+}
+.donatename>a>img:hover{
+	opacity: 0.5;
+}
+.donateplace{
+	text-align: left;
+}
+.donateplace>h4{
+	color: black;
+	font-weight: bolder;
+}
+.ourstory{
+	background-color: rgb(175,222,235);
+	height: 40em;
+}
+.ourstorytitle{
+	height: 12em;
+}
+.ourstorytitle>img{
+	padding-top: 1em;
+	height: 100%;
+}
+.ourstorytitle>h2{
+	color: black;
+	font-weight: bolder;
+	padding-top: 1.4em;
+}

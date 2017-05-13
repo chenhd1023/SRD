@@ -1,0 +1,125 @@
+body{
+	background-color: rgb(204,233,239);
+}
+.header{
+	padding-top: 50px;
+	padding-bottom: 5px; 
+	min-width: 750px;
+	background-color: #FFFFFF;
+}
+.header>div:nth-child(2){
+	text-align: center;
+	min-width: 300px;
+	margin-top: 50px;
+}
+.header>div:nth-child(2)>a{
+	margin: 0px 20px 0px;
+	text-decoration: none;
+	font-size: 2vw;
+}
+.header>div:nth-child(2)>a:nth-child(1){
+	color: rgb(243,152,0);
+	background-color: rgb(204,233,239);
+	border-radius: 10px;
+	padding: 5px 10px 20px;
+}
+.icon>img{
+	width: 38%;
+}
+.icon>span{
+	vertical-align: middle;
+}
+.mainpart{
+	padding-top: 5em;
+}
+.goodsinf{
+	left: 3.6em;
+	text-align: center;
+}
+.goodsinf>h3{
+	padding-bottom: 1em;
+	border-bottom: 1px solid #b8b8b8;
+}
+.items{
+	text-align: left;
+	background-color: #5cb6ff;
+	border-radius: 10px 10px;
+	height: 5.5em;
+}
+.items>h4{
+	padding-top: 0.5em;
+	padding-left: 0.7em;
+}
+.message{
+	padding-bottom: 5em;
+}
+.message>h3{
+	text-align: right;
+	margin-top: 0.5em;
+	border-bottom: 1px solid #b8b8b8;
+}
+.message>h3>span>img{
+	border-radius: 100%;
+	width: 9%;
+	height: 9%;
+}
+.messagecontent{
+	height: 30em;
+	overflow-y: scroll;
+	overflow-x: hidden;
+	padding: 1em;
+}
+.messagecontent>.row{
+	padding-top: 1em;
+}
+.other>p>span>img,.me>p>span>img{
+	height: 3em;
+	width: 3em;
+	border-radius: 100%;
+}
+.other,.me{
+	max-width: 20em;
+	background-color: white;
+	padding: 0.5em;
+	border-radius: 20px 20px;
+}
+.other{
+	float: left;
+}
+.me{
+	float: right;
+}
+.submit{
+	padding-top: 2em;
+	float: right;
+}
+.submit>input{
+	border-radius: 5px 5px;
+	width: 20em;
+}
+.check>h3{
+	text-align: center;
+	padding-bottom: 1em;
+	border-bottom: 1px solid #b8b8b8;
+}
+.checkinf{
+	background-color: #5cb6ff;
+	padding: 1em;
+	border-radius: 10px 10px;
+}
+.checkinf>img{
+	width: 70%;
+}
+.check>.row{
+	padding: 1em;
+	border-radius: 10px 10px;
+}
+.buy,.giveup{
+	border-radius: 10px 10px;
+}
+.buy{
+	float: left;
+}
+.giveup{
+	float: right;
+}
