@@ -1,64 +1,197 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
-    pageEncoding="UTF-8"%>
-
-<!DOCTYPE html>
-<html lang="pt-br">
+	pageEncoding="UTF-8"%>
+<%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
+<c:if test="${'success'==login}">
+	<%@ include file="navbarlogin.jsp"%>
+</c:if>
+<c:if test="${'success'!=login}">
+	<%@ include file="navbarlogout.jsp"%>
+</c:if>
+<html>
 <head>
-<meta charset="utf-8">
-<title>Test</title>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="description" content="">
+<meta name="author" content="">
+<link href="css/bootstrap.min.css" rel="stylesheet">
+<link href="css/signupCss.css" rel="stylesheet">
 <link href="css/croppie.css" rel="stylesheet" type="text/css">
-	<script type="text/javascript" src="http://ajax.googleapis.com/ajax/libs/jquery/1.9.1/jquery.min.js"></script>
-	<script type="text/javascript" src="http://ajax.googleapis.com/ajax/libs/jqueryui/1.10.2/jquery-ui.min.js"></script>
 <script type="text/javascript" src="js/croppie.js"></script>
+
 <script type="text/javascript">
-$( document ).ready(function() {
-    var $uploadCrop;
+	$(document).ready(function() {
+		var $uploadCrop;
+		var $uploadCrop1;
+		var $uploadCrop2;
 
-    function readFile(input) {
-        if (input.files && input.files[0]) {
-            var reader = new FileReader();          
-            reader.onload = function (e) {
-                $uploadCrop.croppie('bind', {
-                    url: e.target.result
-                });
-                $('.upload-demo').addClass('ready');
-            }           
-            reader.readAsDataURL(input.files[0]);
-        }
-    }
+		function readFile(input) {
+			if (input.files && input.files[0]) {
+				var reader = new FileReader();
+				reader.onload = function(e) {
+					$uploadCrop.croppie('bind', {
+						url : e.target.result
+					});
+					$('.upload-demo').addClass('ready');
+				}
+				reader.readAsDataURL(input.files[0]);
+			}
+		}
+		
+		function readFile1(input) {
+			if (input.files && input.files[0]) {
+				var reader = new FileReader();
+				reader.onload = function(e) {
+					$uploadCrop1.croppie('bind', {
+						url : e.target.result
+					});
+					$('.upload-demo1').addClass('ready');
+				}
+				reader.readAsDataURL(input.files[0]);
+			}
+		}
+		
+		function readFile2(input) {
+			if (input.files && input.files[0]) {
+				var reader = new FileReader();
+				reader.onload = function(e) {
+					$uploadCrop2.croppie('bind', {
+						url : e.target.result
+					});
+					$('.upload-demo2').addClass('ready');
+				}
+				reader.readAsDataURL(input.files[0]);
+			}
+		}
 
-    $uploadCrop = $('#upload-demo').croppie({
-        viewport: {
-            width: 200,
-            height: 200,
-            type: 'circle'
-        },
-        boundary: {
-            width: 300,
-            height: 300
-        }
-    });
+		$uploadCrop = $('#upload-demo').croppie({
+			viewport : {
+				width : 200,
+				height : 200
+			},
+			boundary : {
+				width : 300,
+				height : 300
+			}
+		});
+		
+		$uploadCrop = $('#upload-demo1').croppie({
+			viewport : {
+				width : 200,
+				height : 200
+			},
+			boundary : {
+				width : 300,
+				height : 300
+			}
+		});
+		
+		$uploadCrop = $('#upload-demo2').croppie({
+			viewport : {
+				width : 200,
+				height : 200
+			},
+			boundary : {
+				width : 300,
+				height : 300
+			}
+		});
+		
 
-    $('#upload').on('change', function () { readFile(this); });
-    $('.upload-result').on('click', function (ev) {
-        $uploadCrop.croppie('result', {
-            type: 'canvas',
-            size: 'original'
-        }).then(function (resp) {
-            $('#imagebase64').val(resp);
-            $('#form').submit();
-        });
-    });
+		$('#upload').on('change', function() {
+			readFile(this);
+		});
+		$('#upload1').on('change', function() {
+			readFile1(this);
+		});
+		$('#upload2').on('change', function() {
+			readFile2(this);
+		});
+		$('.upload-result').on('click', function(ev) {
+			$uploadCrop.croppie('result', {
+				type : 'canvas',
+				size : 'original'
+			}).then(function(resp) {
+				$('#imagebase64').val(resp);
+				//$('#action').val(resp);
+				$('#form').submit();
+			});
+		});
 
-});
+	});
 </script>
 </head>
 <body>
-<form action="Base64Servlet" id="form" method="post">
-<input type="file" id="upload" value="Choose a file">
-<div id="upload-demo"></div>
-<input type="hidden" id="imagebase64" name="imagebase64">
-<a href="#" class="upload-result">Send</a>
-</form>
+	<div class="container">
+		<div class="row col-xs-12 col-sm-12 col-md-12 col-lg-12">
+			<div
+				class="puzzle1 col-xs-offset-2 col-sm-offset-2 col-md-offset-2 col-lg-offset-2 col-xs-3 col-sm-3 col-md-3 col-lg-3">
+				<img src="img/signup/brightpuzzle.svg">
+				<h3>基本資料</h3>
+			</div>
+			<div class="puzzle2 col-xs-3 col-sm-3 col-md-3 col-lg-3">
+				<img src="img/signup/brightpuzzle.svg">
+				<h3>時間價錢</h3>
+			</div>
+			<div class="puzzle3 col-xs-4 col-sm-4 col-md-4 col-lg-4">
+				<img src="img/signup/darkpuzzle.svg">
+				<h3>物品照片</h3>
+			</div>
+		</div>
+
+		<div class="row table col-xs-12 col-sm-12 col-md-12 col-lg-12">
+			<form class="form-horizontal" role="form" name="form" id="form"
+				action="ProductServlet" method="post">
+				<table style="width:100%">
+					<tr>
+					    <th>
+							<div class="form-group">
+								<label class="col-xs-2 col-sm-2 col-md-2 col-lg-2 control-label">上傳照片</label>
+								<div class="col-xs-8 col-sm-8 col-md-8 col-lg-8">
+									<input type="file" id="upload" value="Choose a file">
+								</div>
+							</div>
+							<div class="form-group">
+								<div id="upload-demo"></div>
+							</div>
+						</th>
+					    <th>
+							<div class="form-group">
+								<label class="col-xs-2 col-sm-2 col-md-2 col-lg-2 control-label">上傳照片</label>
+								<div class="col-xs-8 col-sm-8 col-md-8 col-lg-8">
+									<input type="file" id="upload" value="Choose a file">
+								</div>
+							</div>
+							<div class="form-group">
+								<div id="upload-demo1"></div>
+							</div>
+						</th>
+					    <th>
+							<div class="form-group">
+								<label class="col-xs-2 col-sm-2 col-md-2 col-lg-2 control-label">上傳照片</label>
+								<div class="col-xs-8 col-sm-8 col-md-8 col-lg-8">
+									<input type="file" id="upload" value="Choose a file">
+								</div>
+							</div>
+							<div class="form-group">
+								<div id="upload-demo2"></div>
+							</div>
+						</th>
+				
+				  	</tr>
+				</table>
+				
+				<div class="row submit col-xs-12 col-sm-12 col-md-12 col-lg-12">
+					<div class="col-xs-offset-8 col-xs-2">
+						<div class="button">
+							<input type="hidden" id="imagebase64" name="imagebase64">
+							<input type="hidden" name="action" value="insertThird">
+							<a href="#" class="upload-result">提交</a>
+						</div>
+					</div>
+				</div>
+			</form>
+		</div>
+	</div>
 </body>
 </html>

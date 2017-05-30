@@ -33,13 +33,13 @@
 						<a href="ProductServlet?action=indexToContent&contentType=contentshare" >分享</a>
 					</li>
 					<li>
-						<a href="contentresale.html">出售</a>
+						<a href="ProductServlet?action=indexToContent&contentType=contentresale">出售</a>
 					</li>
 					<li>
-						<a href="contentdonate.html">捐贈</a>
+						<a href="ProductServlet?action=indexToContent&contentType=contentdonate">捐贈</a>
 					</li>
 					<li>
-						<a href="wanted.jsp">懸賞</a>
+						<a href="WantedServlet?action=indexToContent&contentType=wanted">懸賞</a>
 					</li>
 					<li>
 						<a href="goodsassign1.jsp">我要上架</a>
@@ -63,10 +63,10 @@
 						</a>
 						<div id="triangle"></div>
 						<div id="dropdown" class="dropdown-content">
-							<a href="selfPage.jsp">個人頁面</a>
+							<a href="AccountServlet?action=selfPage&accountid=${accountid}">個人頁面</a>
 							<a href="MessageServlet?action=getLatestConversation&accountid=${accountid}">訊息</a>
-							<a href="goodsoutgoing.html">物品出走中</a>
-							<a href="commentyet.html">尚未評論</a>
+							<!-- <a href="goodsoutgoing.html">物品出走中</a> -->
+							<a href="CommentServlet?action=commentyet&accountid=${accountid}">尚未評論</a>
 							<a href="setting.jsp">帳號設定</a>
 							<a href="javascript: return false;" onclick="handler()">登出</a>
 						</div>										

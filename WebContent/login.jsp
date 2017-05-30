@@ -26,14 +26,14 @@
 			<div class="logo">
 				<img src="img/login/logo.svg">
 			</div>
-			<div class="row">
+			<!--  <div class="row">
 				<div class="col-xs-offset-2 col-xs-3 connectfb">
 					<a href=""><img src="img/login/facebook.png"></a>
 				</div>
 				<div class="col-xs-offset-1 col-xs-3 connectgoogle">
 					<a href=""><img src="img/login/google.png"></a>
 				</div>
-			</div>
+			</div>-->
 			<form class="form-horizontal" role="form" action="AccountServlet" method="post">
 			<div class="row table col-xs-12">
 				

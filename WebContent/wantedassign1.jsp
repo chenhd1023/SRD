@@ -5,7 +5,7 @@
 	<%@ include file="navbarlogin.jsp"%>
 </c:if>
 <c:if test="${'success'!=login}">
-	<%@ include file="navbarlogout.jsp"%>
+	<c:redirect url = "login.jsp"/>
 </c:if>
 <html>
 	<head>
@@ -23,6 +23,8 @@
 	</head>
 	<body>
 		<div class="container">
+		<p>&nbsp</p>
+		<p>&nbsp</p>
 			<div class="row col-xs-12 col-sm-12 col-md-12 col-lg-12">
 				<div class="puzzle1 col-xs-offset-2 col-sm-offset-2 col-md-offset-2 col-lg-offset-2 col-xs-3 col-sm-3 col-md-3 col-lg-3">
 					<img src="img/signup/darkpuzzle.svg">

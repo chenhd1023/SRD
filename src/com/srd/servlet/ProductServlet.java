@@ -196,7 +196,8 @@ public class ProductServlet extends HttpServlet {
 				String crntImage = request.getParameter("imagebase64");
 				BASE64Decoder decode = new BASE64Decoder();
 				byte[] data = decode.decodeBuffer(crntImage.substring(crntImage.indexOf(",")+1));
-				OutputStream stream = new FileOutputStream("C:/Users/Administrator/workspace/srdtest/WebContent/"+fileSavePathString);
+				//OutputStream stream = new FileOutputStream("C:/Users/Administrator/workspace/srdtest/WebContent/"+fileSavePathString);
+				OutputStream stream = new FileOutputStream("C:/Program Files/Apache Software Foundation/Tomcat 7.0/webapps/srdtest/"+fileSavePathString);
 				stream.write(data);
 				
 				productVO.setPicture1(fileSavePathString);
@@ -212,7 +213,7 @@ public class ProductServlet extends HttpServlet {
 				request.getSession().setAttribute("catalog",productVO.getCatalog());
 				request.getSession().setAttribute("describe",productVO.getDescribe());
 				request.getSession().setAttribute("picture1",productVO.getPicture1());
-				
+				request.getSession().setAttribute("productVO",productVO);
 				
 				
 				response.sendRedirect("goods.jsp");
@@ -240,17 +241,55 @@ public class ProductServlet extends HttpServlet {
 			Statement stmt = null;
 			try {
 				conn = DriverManager.getConnection(url, user, password);
+				String contentType = request.getParameter("contentType");
 				ProductDAO productDAO = new ProductDAO(conn);
+				
 				List<ProductVO> productVOs = new ArrayList<>();
+				if (contentType.equals("contentshare")) {
+					productVOs = productDAO.queryAll();
+				} else {
+					productVOs = productDAO.queryByContentType(contentType);
+				}
 				
 				
-				productVOs = productDAO.queryAll();
 		
 
 				request.getSession().setAttribute("productVOs",productVOs);
-				
-				
-				
+				request.getSession().setAttribute("url","action=indexToContent&contentType="+contentType);
+				response.sendRedirect(contentType+".jsp");
+			} catch (SQLException e) {
+				e.printStackTrace();
+			} finally {
+				if (stmt != null) {
+					try {
+						stmt.close();
+					} catch (SQLException e) {
+						e.printStackTrace();
+					}
+				}
+				if (conn != null) {
+					try {
+						conn.close();
+					} catch (SQLException e) {
+						e.printStackTrace();
+					}
+				}
+			}
+		}else if ("catalogSearch".equals(action)) {
+			loadDriver();
+			Connection conn = null;
+			Statement stmt = null;
+			try {
+				conn = DriverManager.getConnection(url, user, password);
+				ProductDAO productDAO = new ProductDAO(conn);
+				List<ProductVO> productVOs = new ArrayList<>();
+				String catalog=request.getParameter("catalog");
+				String contentType=request.getParameter("contentType");
+				productVOs = productDAO.queryByCatlog(catalog, contentType);
+		
+
+				request.getSession().setAttribute("productVOs",productVOs);
+				request.getSession().setAttribute("url","action=catalogSearch&contentType=contentshare&catalog="+catalog);
 				response.sendRedirect("contentshare.jsp");
 			} catch (SQLException e) {
 				e.printStackTrace();

@@ -5,6 +5,7 @@ import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 
+import com.srd.vo.ProductVO;
 import com.srd.vo.SrbAccountVO;
 
 public class SrbAccountDAO {
@@ -56,8 +57,8 @@ public class SrbAccountDAO {
 	public void insert(SrbAccountVO vo) throws SQLException {
 		PreparedStatement pstmt = null;
 		String sql = "insert into account(                           "
-				+ "   name,schoolmail,humanid,accountid,accountpassword, cellphone             " + "  )  "
-				+ "values(                    " + "   ?,?,?,?,?,?  )         ";
+				+ "   name,schoolmail,humanid,accountid,accountpassword, cellphone,photo            " + "  )  "
+				+ "values(                    " + "   ?,?,?,?,?,?,? )         ";
 		try {
 			pstmt = conn.prepareStatement(sql);
 			pstmt.setString(1, vo.getName());
@@ -66,6 +67,7 @@ public class SrbAccountDAO {
 			pstmt.setString(4, vo.getAccountid());
 			pstmt.setString(5, vo.getAccountpassword());
 			pstmt.setString(6, vo.getCellphone());
+			pstmt.setString(7, "img/profile/default.svg");
 			pstmt.executeUpdate();
 		} catch (Exception e) {
 			throw e;
@@ -144,6 +146,23 @@ public class SrbAccountDAO {
 		} finally {
 			if (rset != null)
 				rset.close();
+			if (pstmt != null)
+				pstmt.close();
+		}
+	}
+	
+	public void updatePhoto(SrbAccountVO vo) throws SQLException {
+		PreparedStatement pstmt = null;
+		String sql = "update account set photo=?  where accountid=?    ";
+		try {
+			pstmt = conn.prepareStatement(sql);
+			pstmt.setString(1, vo.getPhoto());
+			pstmt.setString(2, vo.getAccountid());
+			//pstmt.setString(5, null);
+			pstmt.executeUpdate();
+		} catch (Exception e) {
+			throw e;
+		} finally {
 			if (pstmt != null)
 				pstmt.close();
 		}

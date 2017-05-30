@@ -23,6 +23,8 @@
 	</head>
 	<body>
 		<div class="container">
+		<p>&nbsp</p>
+		<p>&nbsp</p>
 			<div class="row col-xs-12 col-sm-12 col-md-12 col-lg-12">
 				<div class="puzzle1 col-xs-offset-2 col-sm-offset-2 col-md-offset-2 col-lg-offset-2 col-xs-3 col-sm-3 col-md-3 col-lg-3">
 					<img src="img/signup/darkpuzzle.svg">
@@ -55,7 +57,16 @@
 					<div class="form-group">
 						<label class="col-xs-2 col-sm-2 col-md-2 col-lg-2 control-label">分類</label>
 						<div class="col-xs-8 col-sm-8 col-md-8 col-lg-8">
-							<input type="text" class="form-control" placeholder="分類" name="catalog">
+							<select name="catalog" class="form-control">
+								<option value="">==請選擇==</option>
+							  	<option value="lodging">住宿</option>
+							  	<option value="exam">考試</option>
+							  	<option value="3C">3C</option>
+							  	<option value="travel">出遊</option>
+							  	<option value="book">書籍</option>
+							 	<option value="cloth">衣著</option>
+							  	<option value="fun">娛樂</option>
+							</select>
 						</div>
 					</div>
 					<div class="form-group">

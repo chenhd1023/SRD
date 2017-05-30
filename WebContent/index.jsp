@@ -14,6 +14,7 @@
 <meta http-equiv="X-UA-Compatible" content="IE=edge">
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <meta name="description" content="">
+<meta property="og:image" content="http://140.119.19.28:8088/srdtest/img/favicon.png"></meta>
 <meta name="author" content="">
 <title>homepage</title>
 <!-- Bootstrap Core CSS -->
@@ -31,6 +32,7 @@
 	<!-- nav-bar -->
 
 	<div id="content">
+		<p>&nbsp</p>
 		<!-- banner -->
 		<div class="row">
 			<div class="col-xs-12 col-sm-12 col-md-12 col-lg-12"
@@ -50,7 +52,7 @@
 									<img class="slide-image" src="img/index/sharingbanner.svg">
 								</div>
 								<div class="item">
-									<img class="slide-image" src="img/index/resale banner.svg"
+									<img class="slide-image" src="img/index/resalebanner.svg"
 										alt="">
 								</div>
 								<div class="item">
@@ -78,21 +80,21 @@
 					<img src="img/index/lifecycle.svg" width="75%">
 				</div>
 				<div class="col-xs-3 col-sm-3 col-md-3 col-lg-3 lifecycleimg">
-					<a href="#" onclick="submitIndexForm('contentshare');return false;"><img src="img/index/share.svg"
+					<a href="ProductServlet?action=indexToContent&contentType=contentshare" ><img src="img/index/share.svg"
 						width="60%"></a><br> <a style="text-decoration: none"
-						href="#" onclick="submitIndexForm('contentshare');return false;"><h2
+						href="ProductServlet?action=indexToContent&contentType=contentshare"><h2
 							style="text-align: center; color: black">分享</h2></a>
 				</div>
 				<div class="col-xs-3 col-sm-3 col-md-3 col-lg-3 lifecycleimg">
-					<a href="contentresale.html"><img src="img/index/resale.svg"
+					<a href="ProductServlet?action=indexToContent&contentType=contentresale"><img src="img/index/resale.svg"
 						width="60%"></a><br> <a style="text-decoration: none"
-						href="contentresale.html"><h2
-							style="text-align: center; color: black">販售</h2></a>
+						href="ProductServlet?action=indexToContent&contentType=contentresale"><h2
+							style="text-align: center; color: black">轉售</h2></a>
 				</div>
 				<div class="col-xs-3 col-sm-3 col-md-3 col-lg-3 lifecycleimg">
-					<a href="contentdonate.html"><img src="img/index/donate.svg"
+					<a href="ProductServlet?action=indexToContent&contentType=contentdonate"><img src="img/index/donate.svg"
 						width="60%"></a><br> <a style="text-decoration: none"
-						href="contentdonate.html"><h2
+						href="ProductServlet?action=indexToContent&contentType=contentdonate"><h2
 							style="text-align: center; color: black">捐贈</h2></a>
 				</div>
 			</div>
@@ -101,36 +103,35 @@
 		<div class="row hot">
 			<div class="col-xs-12 hottitle">
 				<img class="col-xs-2" src="img/homepage/hot.svg">
-				<h2>熱門活動分類</h2>
+				<h2>熱門分類</h2>
 			</div>
 			<div class="col-xs-12 hotactivities">
 				<div class="col-xs-2 hotactivity">
-					<a href=""><h2>宿營</h2></a>
+					<a href="ProductServlet?action=catalogSearch&contentType=contentshare&catalog=fun"><h2>娛樂</h2></a>
 					<hr>
 					<div class="hotactivityimg">
-						<a href=""><img src="img/homepage/photo/宿營.jpg" title="中友宿營"></a>
+						<a href="ProductServlet?action=catalogSearch&contentType=contentshare&catalog=fun"><img src="img/homepage/photo/switch.jpg" title="娛樂"></a>
 					</div>
 				</div>
 				<div class="col-xs-2 hotactivity">
-					<a href=""><h2>社團成發</h2></a>
+					<a href="ProductServlet?action=catalogSearch&contentType=contentshare&catalog=travel"><h2>出遊</h2></a>
 					<hr>
 					<div class="hotactivityimg">
-						<a href=""><img src="img/homepage/photo/社團成發.jpg"
-							title="啦啦隊成發"></a>
+						<a href="ProductServlet?action=catalogSearch&contentType=contentshare&catalog=travel"><img src="img/homepage/photo/picnic.jpg" title="出遊"></a>
 					</div>
 				</div>
 				<div class="col-xs-2 hotactivity">
-					<a href=""><h2>之夜</h2></a>
+					<a href="ProductServlet?action=catalogSearch&contentType=contentshare&catalog=book"><h2>書籍</h2></a>
 					<hr>
 					<div class="hotactivityimg">
-						<a href=""><img src="img/homepage/photo/之夜.jpg" title="資管之夜"></a>
+						<a href="ProductServlet?action=catalogSearch&contentType=contentshare&catalog=book"><img src="img/homepage/photo/accounting.jpg" title="書籍"></a>
 					</div>
 				</div>
 				<div class="col-xs-2 hotactivity">
-					<a href=""><h2>文化盃</h2></a>
+					<a href="ProductServlet?action=catalogSearch&contentType=contentshare&catalog=3C"><h2>3C</h2></a>
 					<hr>
 					<div class="hotactivityimg">
-						<a href=""><img src="img/homepage/photo/文化盃.jpg" title="資管文化盃"></a>
+						<a href="ProductServlet?action=catalogSearch&contentType=contentshare&catalog=3C"><img src="img/homepage/photo/iphone.jpg" title="3C"></a>
 					</div>
 				</div>
 			</div>
@@ -140,38 +141,38 @@
 			</div>
 			<div class="col-xs-12 hotgoods">
 				<div class="col-xs-2 hotgood">
-					<a href=""><h3>音箱</h3></a>
+					<a href="ProductServlet?action=getOneProduct&idproduct=27"><h3>NDS</h3></a>
 					<hr>
 					<div class="hotgoodimg">
-						<a href=""><img src="img/homepage/items/音箱.jpg"></a>
+						<a href="ProductServlet?action=getOneProduct&idproduct=27"><img src="img/products/27.jpg"></a>
 					</div>
 				</div>
 				<div class="col-xs-2 hotgood">
-					<a href=""><h3>PS4</h3></a>
+					<a href="ProductServlet?action=getOneProduct&idproduct=20"><h3>吹風機</h3></a>
 					<hr>
 					<div class="hotgoodimg">
-						<a href=""><img src="img/homepage/items/ps4.jpg"></a>
+						<a href="ProductServlet?action=getOneProduct&idproduct=20"><img src="img/products/20.png"></a>
 					</div>
 				</div>
 				<div class="col-xs-2 hotgood">
-					<a href=""><h3>擴音器</h3></a>
+					<a href="ProductServlet?action=getOneProduct&idproduct=24"><h3>普心筆記</h3></a>
 					<hr>
 					<div class="hotgoodimg">
-						<a href=""><img src="img/homepage/items/擴音器.jpg"></a>
+						<a href="ProductServlet?action=getOneProduct&idproduct=24"><img src="img/products/24.png"></a>
 					</div>
 				</div>
 				<div class="col-xs-2 hotgood">
-					<a href=""><h3>筆記</h3></a>
+					<a href="ProductServlet?action=getOneProduct&idproduct=21"><h3>娃娃</h3></a>
 					<hr>
 					<div class="hotgoodimg">
-						<a href=""><img src="img/homepage/items/筆記.jpg"></a>
+						<a href="ProductServlet?action=getOneProduct&idproduct=21"><img src="img/products/21.png"></a>
 					</div>
 				</div>
 				<div class="col-xs-2 hotgood">
-					<a href=""><h3>機車-G5</h3></a>
+					<a href="ProductServlet?action=getOneProduct&idproduct=28"><h3>MacBook Pro</h3></a>
 					<hr>
 					<div class="hotgoodimg">
-						<a href=""><img src="img/homepage/items/機車.jpg"></a>
+						<a href="ProductServlet?action=getOneProduct&idproduct=28"><img src="img/products/28.png"></a>
 					</div>
 				</div>
 			</div>
@@ -188,16 +189,16 @@
 					<div class="shareinside">
 						<div class="col-xs-12">
 							<div class="col-xs-4 shareimg">
-								<img src="img/homepage/photo/arimura.jpg" alt="">
+								<img src="img/profile/default.svg" alt="">
 							</div>
 							<div class="col-xs-6 shareid">
-								<a href=""><h3>有村架純</h3></a>
+								<a href=""><h3>103306066</h3></a>
 							</div>
 						</div>
 						<div class="sharegood">
-							<a href=""><h3>機車-G5</h3></a>
+							<a href="ProductServlet?action=getOneProduct&idproduct=23"><h3>ipone7</h3></a>
 							<div class="sharegoodname">
-								<a href=""><img src="img/homepage/items/機車.jpg" alt=""></a>
+								<a href="ProductServlet?action=getOneProduct&idproduct=23"><img src="img/products/23.png" alt=""></a>
 							</div>
 						</div>
 					</div>
@@ -206,16 +207,16 @@
 					<div class="shareinside">
 						<div class="col-xs-12">
 							<div class="col-xs-4 shareimg">
-								<img src="img/homepage/photo/arimura.jpg" alt="">
+								<img src="img/profile/Wang.png" alt="">
 							</div>
 							<div class="col-xs-6 shareid">
-								<a href=""><h3>有村架純</h3></a>
-							</div>
+								<a href=""><h3>Wang</h3></a>
+							</div> 
 						</div>
 						<div class="sharegood">
-							<a href=""><h3>機車-G5</h3></a>
+							<a href="ProductServlet?action=getOneProduct&idproduct=38"><h3>西裝</h3></a>
 							<div class="sharegoodname">
-								<a href=""><img src="img/homepage/items/機車.jpg" alt=""></a>
+								<a href="ProductServlet?action=getOneProduct&idproduct=38"><img src="img/products/38.png" alt=""></a>
 							</div>
 						</div>
 					</div>
@@ -224,16 +225,16 @@
 					<div class="shareinside">
 						<div class="col-xs-12">
 							<div class="col-xs-4 shareimg">
-								<img src="img/homepage/photo/arimura.jpg" alt="">
+								<img src="img/profile/Yuzen.png" alt="">
 							</div>
 							<div class="col-xs-6 shareid">
-								<a href=""><h3>有村架純</h3></a>
-							</div>
+								<a href=""><h3>Yuzen</h3></a>
+							</div> 
 						</div>
 						<div class="sharegood">
-							<a href=""><h3>機車-G5</h3></a>
+							<a href="ProductServlet?action=getOneProduct&idproduct=27"><h3>NDS</h3></a>
 							<div class="sharegoodname">
-								<a href=""><img src="img/homepage/items/機車.jpg" alt=""></a>
+								<a href="ProductServlet?action=getOneProduct&idproduct=27"><img src="img/products/27.jpg" alt=""></a>
 							</div>
 						</div>
 					</div>
@@ -251,32 +252,32 @@
 					<div class="col-xs-5 wantedbg">
 						<div class="col-xs-12">
 							<div class="col-xs-5 wantedcontent">
-								<a href=""><h2>音箱</h2></a>
+								<a href="WantedServlet?action=getOneWanted&idwanted=4"><h2>普心筆記</h2></a>
 								<div>
 									<h3>目前最高出價:</h3>
-									<h3>$500/Day</h3>
+									<h3>$200/Day</h3>
 								</div>
 							</div>
 							<div class="col-xs-5 wantedimg">
-								<h4>截止時間:12hr23min</h4>
-								<a href=""><img src="img/homepage/items/音箱.jpg" alt=""></a>
-								<button>我要出價</button>
+								<h4>截止時間:2017/06/20</h4>
+								<a href="WantedServlet?action=getOneWanted&idwanted=4"><img src="img/wanted/4.png" alt=""></a>
+								<button onclick="location.href='WantedServlet?action=getOneWanted&idwanted=4'">我要出價</button>
 							</div>
 						</div>
 					</div>
 					<div class="col-xs-5 wantedbg">
 						<div class="col-xs-12">
 							<div class="col-xs-5 wantedcontent">
-								<a href=""><h2>音箱</h2></a>
+								<a href="WantedServlet?action=getOneWanted&idwanted=11"><h2>相機</h2></a>
 								<div>
 									<h3>目前最高出價:</h3>
 									<h3>$500/Day</h3>
 								</div>
 							</div>
 							<div class="col-xs-5 wantedimg">
-								<h4>截止時間:12hr23min</h4>
-								<a href=""><img src="img/homepage/items/音箱.jpg" alt=""></a>
-								<button>我要出價</button>
+								<h4>截止時間:2017/07/30</h4>
+								<a href="WantedServlet?action=getOneWanted&idwanted=11"><img src="img/wanted/11.png" alt=""></a>
+								<button onclick="location.href='WantedServlet?action=getOneWanted&idwanted=11'">我要出價</button>
 							</div>
 						</div>
 					</div>
@@ -285,32 +286,32 @@
 					<div class="col-xs-5 wantedbg">
 						<div class="col-xs-12">
 							<div class="col-xs-5 wantedcontent">
-								<a href=""><h2>音箱</h2></a>
+								<a href="WantedServlet?action=getOneWanted&idwanted=16"><h2>機車</h2></a>
 								<div>
 									<h3>目前最高出價:</h3>
-									<h3>$500/Day</h3>
+									<h3>$1000/Day</h3>
 								</div>
 							</div>
 							<div class="col-xs-5 wantedimg">
-								<h4>截止時間:12hr23min</h4>
-								<a href=""><img src="img/homepage/items/音箱.jpg" alt=""></a>
-								<button>我要出價</button>
+								<h4>截止時間:2017/07/15</h4>
+								<a href="WantedServlet?action=getOneWanted&idwanted=16"><img src="img/wanted/16.png" alt=""></a>
+								<button onclick="location.href='WantedServlet?action=getOneWanted&idwanted=16'">我要出價</button>
 							</div>
 						</div>
 					</div>
 					<div class="col-xs-5 wantedbg">
 						<div class="col-xs-12">
 							<div class="col-xs-5 wantedcontent">
-								<a href=""><h2>音箱</h2></a>
+								<a href="WantedServlet?action=getOneWanted&idwanted=18"><h2>音箱</h2></a>
 								<div>
 									<h3>目前最高出價:</h3>
-									<h3>$500/Day</h3>
+									<h3>$50/Day</h3>
 								</div>
 							</div>
 							<div class="col-xs-5 wantedimg">
-								<h4>截止時間:12hr23min</h4>
-								<a href=""><img src="img/homepage/items/音箱.jpg" alt=""></a>
-								<button>我要出價</button>
+								<h4>截止時間:2017/08/01</h4>
+								<a href="WantedServlet?action=getOneWanted&idwanted=18"><img src="img/wanted/18.png" alt=""></a>
+								<button onclick="location.href='WantedServlet?action=getOneWanted&idwanted=18'">我要出價</button>
 							</div>
 						</div>
 					</div>
@@ -330,76 +331,71 @@
 				<div class="col-xs-12 donateitems">
 					<div class="col-xs-3 donatebg">
 						<div class="donatename">
-							<a href=""><h2>地燈</h2></a> <a href=""><img
-								src="img/homepage/items/地燈.jpg" alt=""></a>
+							<a href="ProductServlet?action=getOneProduct&idproduct=21"><h2>娃娃</h2></a> <a href="ProductServlet?action=getOneProduct&idproduct=21"><img
+								src="img/products/21.png" alt=""></a>
 						</div>
 						<div class="donateplace">
 							<h4>面交地點:</h4>
-							<h4>羅馬廣場</h4>
+							<h4>商院一樓</h4>
 						</div>
 					</div>
 					<div class="col-xs-3 col-xs-offset-1 donatebg">
 						<div class="donatename">
-							<a href=""><h2>地燈</h2></a> <a href=""><img
-								src="img/homepage/items/地燈.jpg" alt=""></a>
+							<a href="ProductServlet?action=getOneProduct&idproduct=20"><h2>吹風機</h2></a> <a href="ProductServlet?action=getOneProduct&idproduct=20"><img
+								src="img/products/20.png" alt=""></a>
 						</div>
 						<div class="donateplace">
 							<h4>面交地點:</h4>
-							<h4>羅馬廣場</h4>
+							<h4>商院</h4>
 						</div>
 					</div>
 					<div class="col-xs-3 col-xs-offset-1 donatebg">
 						<div class="donatename">
-							<a href=""><h2>地燈</h2></a> <a href=""><img
-								src="img/homepage/items/地燈.jpg" alt=""></a>
+							<a href="ProductServlet?action=getOneProduct&idproduct=22"><h2>臉盆</h2></a> <a href="ProductServlet?action=getOneProduct&idproduct=22"><img
+								src="img/products/22.jpg" alt=""></a>
 						</div>
 						<div class="donateplace">
 							<h4>面交地點:</h4>
-							<h4>羅馬廣場</h4>
+							<h4>莊九</h4>
 						</div>
 					</div>
 				</div>
 				<div class="col-xs-12 donateitems">
 					<div class="col-xs-3 donatebg">
 						<div class="donatename">
-							<a href=""><h2>地燈</h2></a> <a href=""><img
-								src="img/homepage/items/地燈.jpg" alt=""></a>
+							<a href="ProductServlet?action=getOneProduct&idproduct=19"><h2>鉛筆</h2></a> <a href="ProductServlet?action=getOneProduct&idproduct=19"><img
+								src="img/products/19.png" alt=""></a>
 						</div>
 						<div class="donateplace">
 							<h4>面交地點:</h4>
-							<h4>羅馬廣場</h4>
+							<h4>莊一</h4>
 						</div>
 					</div>
 					<div class="col-xs-3 col-xs-offset-1 donatebg">
 						<div class="donatename">
-							<a href=""><h2>地燈</h2></a> <a href=""><img
-								src="img/homepage/items/地燈.jpg" alt=""></a>
+							<a href="ProductServlet?action=getOneProduct&idproduct=36"><h2>工程計算機</h2></a> <a href="ProductServlet?action=getOneProduct&idproduct=36"><img
+								src="img/products/36.png" alt=""></a>
 						</div>
 						<div class="donateplace">
 							<h4>面交地點:</h4>
-							<h4>羅馬廣場</h4>
+							<h4>商院</h4>
 						</div>
 					</div>
 					<div class="col-xs-3 col-xs-offset-1 donatebg">
 						<div class="donatename">
-							<a href=""><h2>地燈</h2></a> <a href=""><img
-								src="img/homepage/items/地燈.jpg" alt=""></a>
+							<a href="ProductServlet?action=getOneProduct&idproduct=51"><h2>管理科學課本</h2></a> <a href="ProductServlet?action=getOneProduct&idproduct=51"><img
+								src="img/products/51.png" alt=""></a>
 						</div>
 						<div class="donateplace">
 							<h4>面交地點:</h4>
-							<h4>羅馬廣場</h4>
+							<h4>商院</h4>
 						</div>
 					</div>
 				</div>
 			</div>
 		</div>
 		<!-- OurStory -->
-		<div class="row ourstory">
-			<div class="col-xs-12 ourstorytitle">
-				<img class="col-xs-2" src="img/homepage/ourstory.svg">
-				<h2>OUR STORY</h2>
-			</div>
-		</div>
+			<img  src="img/homepage/ourstory1.svg">
 	</div>
 	<script src="js/jquery.js"></script>
 	<!-- Bootstrap Core JavaScript -->

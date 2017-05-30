@@ -1,10 +1,14 @@
 package com.srd.servlet;
 
+import java.io.FileOutputStream;
 import java.io.IOException;
+import java.io.OutputStream;
 import java.sql.Connection;
 import java.sql.DriverManager;
 import java.sql.SQLException;
 import java.sql.Statement;
+import java.util.ArrayList;
+import java.util.List;
 
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
@@ -12,7 +16,11 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
+import sun.misc.BASE64Decoder;
+
+import com.srd.dao.ProductDAO;
 import com.srd.dao.SrbAccountDAO;
+import com.srd.vo.ProductVO;
 import com.srd.vo.SrbAccountVO;
 
 /**
@@ -155,7 +163,119 @@ public class AccountServlet extends HttpServlet {
 		} else if ("logout".equals(action)) {
 			request.getSession().setAttribute("login", "fail");
 			response.sendRedirect("index.jsp");
-		}
+		}else if ("updatePhoto".equals(action)) {
+			loadDriver();
+			Connection conn = null;
+			Statement stmt = null;
+			try {
+				conn = DriverManager.getConnection(url, user, password);
+				SrbAccountDAO accountDAO = new SrbAccountDAO(conn);
+				SrbAccountVO accountVO = new SrbAccountVO();
+				String accountid = request.getParameter("accountid");
+				
+				String fileSavePathString = "img/profile/"+accountid+".png";
+				String crntImage = request.getParameter("imagebase64");
+				BASE64Decoder decode = new BASE64Decoder();
+				byte[] data = decode.decodeBuffer(crntImage.substring(crntImage.indexOf(",")+1));
+				//OutputStream stream = new FileOutputStream("C:/Users/Administrator/workspace/srdtest/WebContent/"+fileSavePathString);
+				OutputStream stream = new FileOutputStream("C:/Program Files/Apache Software Foundation/Tomcat 7.0/webapps/srdtest/"+fileSavePathString);
+				stream.write(data);
+				accountVO.setAccountid(accountid);
+				accountVO.setPhoto(fileSavePathString);
+				accountDAO.updatePhoto(accountVO);
+				stream.close();
+				request.getSession().setAttribute("profilePhoto",fileSavePathString);
+				response.sendRedirect("setting.jsp");
+			} catch (SQLException e) {
+				e.printStackTrace();
+			} finally {
+				if (stmt != null) {
+					try {
+						stmt.close();
+					} catch (SQLException e) {
+						e.printStackTrace();
+					}
+				}
+				if (conn != null) {
+					try {
+						conn.close();
+					} catch (SQLException e) {
+						e.printStackTrace();
+					}
+				}
+			}
+		}else if ("selfPage".equals(action)) {
+			loadDriver();
+			Connection conn = null;
+			Statement stmt = null;
+			try {
+				conn = DriverManager.getConnection(url, user, password);
+				SrbAccountDAO accountDAO = new SrbAccountDAO(conn);
+				SrbAccountVO accountVO = new SrbAccountVO();
+				ProductDAO productDAO = new ProductDAO(conn);
+				List<List<ProductVO>> products = new ArrayList<>();
+				String accountid = request.getParameter("accountid");
+				accountVO=accountDAO.getAllStatusByAccountid(accountid);
+				products = productDAO.queryByAccountid(accountid);
+				request.getSession().setAttribute("accountVO",accountVO);
+				request.getSession().setAttribute("products",products);
+				request.getSession().setAttribute("url","action=selfPage&accountid="+accountid);
+				response.sendRedirect("selfPage.jsp");
+			} catch (SQLException e) {
+				e.printStackTrace();
+			} finally {
+				if (stmt != null) {
+					try {
+						stmt.close();
+					} catch (SQLException e) {
+						e.printStackTrace();
+					}
+				}
+				if (conn != null) {
+					try {
+						conn.close();
+					} catch (SQLException e) {
+						e.printStackTrace();
+					}
+				}
+			}
+		} else if ("personalPage".equals(action)) {
+			loadDriver();
+			Connection conn = null;
+			Statement stmt = null;
+			try {
+				conn = DriverManager.getConnection(url, user, password);
+				SrbAccountDAO accountDAO = new SrbAccountDAO(conn);
+				SrbAccountVO accountVO = new SrbAccountVO();
+				ProductDAO productDAO = new ProductDAO(conn);
+				List<List<ProductVO>> products = new ArrayList<>();
+				String accountid = request.getParameter("accountid");
+				accountVO=accountDAO.getAllStatusByAccountid(accountid);
+				products = productDAO.queryByAccountid(accountid);
+				request.getSession().setAttribute("accountVO",accountVO);
+				request.getSession().setAttribute("products",products);
+				request.getSession().setAttribute("url","action=personalPage&accountid="+accountid);
+				response.sendRedirect("personalPage.jsp");
+			} catch (SQLException e) {
+				e.printStackTrace();
+			} finally {
+				if (stmt != null) {
+					try {
+						stmt.close();
+					} catch (SQLException e) {
+						e.printStackTrace();
+					}
+				}
+				if (conn != null) {
+					try {
+						conn.close();
+					} catch (SQLException e) {
+						e.printStackTrace();
+					}
+				}
+			}
+		}   
+		
 	}
 
 }

@@ -11,6 +11,11 @@
 <html>
 <head>
 <meta charset="UTF-8">
+<meta property="og:title" content="SRD"></meta>
+<meta property="og:description" content="Share Rush Demand"/>
+<meta property="og:url" content="http://140.119.19.28:8088/srdtest/ProductServlet?action=getOneProduct&idproduct=${productVO.getIdproduct()}"/>
+<meta property="og:image" content="http://140.119.19.28:8088/srdtest/img/favicon.png"></meta>
+<meta property="fb:app_id" content="1676654989314743"/> 
 <title>商品</title>
 <link href="css/bootstrap.min.css" rel="stylesheet">
 <link href="css/goodsCss.css" rel="stylesheet">
@@ -20,8 +25,27 @@
 	src="http://ajax.googleapis.com/ajax/libs/jqueryui/1.10.2/jquery-ui.min.js"></script>
 
 </head>
-<body>
+<script>
+	function codeAddress() {
+		var stateObj = {
+			foo : "bar"
+		};
+		history.pushState(stateObj, "page 2", "ProductServlet?action=getOneProduct&idproduct=${productVO.getIdproduct()}");
+	}
+</script>
+<body onload="codeAddress();">
+<div id="fb-root"></div>
+<script>(function(d, s, id) {
+  var js, fjs = d.getElementsByTagName(s)[0];
+  if (d.getElementById(id)) return;
+  js = d.createElement(s); js.id = id;
+  js.src = "//connect.facebook.net/zh_TW/sdk.js#xfbml=1&version=v2.9&appId=1676654989314743";
+  fjs.parentNode.insertBefore(js, fjs);
+}(document, 'script', 'facebook-jssdk'));</script>
 	<div class="col-xs-offset-1 container">
+		<p>&nbsp</p>
+		<p>&nbsp</p>
+		<p>&nbsp</p>
 		<div class="row">
 			<div class="img">
 				<div class="bigimg">
@@ -49,7 +73,7 @@
 			<div class="description">
 				<div class="title">
 					<p>${productVO.getName()}</p>
-				</div>
+					</div>
 				<div class="simpleinf">
 					<p>
 						買斷價格 : <span>${productVO.getSaleprice()}</span>
@@ -60,14 +84,17 @@
 					<p>
 						面交地點 : <span>${productVO.getPlace()}</span>
 					</p>
+					
 				</div>
+				<br>
+				<div class="fb-share-button" data-href="http://140.119.19.28:8088/srdtest/ProductServlet?action=getOneProduct&idproduct=${productVO.getIdproduct()}" data-layout="button" data-size="large" data-mobile-iframe="true"><a class="fb-xfbml-parse-ignore" target="_blank" href="https://www.facebook.com/sharer/sharer.php?u=https%3A%2F%2Fdevelopers.facebook.com%2Fdocs%2Fplugins%2F&amp;src=sdkpreparse">分享</a></div> 
 				<div class="seller">
 					<div class="aboutseller">
 						<p>
-							關於賣家 &nbsp;<a href="personalPage.html">${srbAccountVO.getAccountid()}</a>
+							關於賣家 &nbsp;<a href="AccountServlet?action=personalPage&accountid=${srbAccountVO.getAccountid()}">${srbAccountVO.getName()}</a>
 						</p>
 						<div class="sellerimg">
-							<a href="personalPage.html"> <img
+							<a href="AccountServlet?action=personalPage&accountid=${srbAccountVO.getAccountid()}"> <img
 								src="${srbAccountVO.getPhoto()}">
 							</a>
 						</div>
@@ -80,7 +107,8 @@
 							E-mail : <span>${srbAccountVO.getSchoolmail()}</span>
 						</p>
 						<c:if test="${accountid!=null&&productVO.getOwner()!=accountid}">
-							<button class="btn btn-default" onclick="javascript:location.href='MessageServlet?action=getConversation&idproduct=${productVO.getIdproduct()}&seller=${productVO.getOwner()}&buyer=${accountid}'">聯絡賣家</button>
+							<button class="btn btn-default"
+								onclick="javascript:location.href='MessageServlet?action=getConversation&idproduct=${productVO.getIdproduct()}&seller=${productVO.getOwner()}&buyer=${accountid}&productOrWanted=product'">聯絡賣家</button>
 						</c:if>
 					</div>
 				</div>
@@ -98,11 +126,87 @@
 			<div class="detailinf">
 				<div class="detailinf1 detailhiden">
 					<p>
-						商品分類 : <a href="">${productVO.getCatalog()}</a>
+						商品分類 : <a href="">之夜</a>
 					</p>
 					<p>
-						物品狀況 : <span>${productVO.getDescribe()}</span>
+						物品狀況 : <span>九成新，幾乎無磨損</span>
 					</p>
+					<div>
+						<p style="font-size: 18px;">可用時間 :</p>
+					</div>
+					<div>
+						<table class="calendar">
+							<tr>
+								<th><button type="button" onclick="changemonth(-1)"><</button></th>
+								<th colspan="5" id="titleyearmonth"></th>
+								<th><button type="button" onclick="changemonth(1)">></button></th>
+							</tr>
+							<tr>
+								<td>日</td>
+								<td>一</td>
+								<td>二</td>
+								<td>三</td>
+								<td>四</td>
+								<td>五</td>
+								<td>六</td>
+							</tr>
+							<tr>
+								<td onclick="selectFunction(this)" id="x0y0"></td>
+								<td onclick="selectFunction(this)" id="x1y0"></td>
+								<td onclick="selectFunction(this)" id="x2y0"></td>
+								<td onclick="selectFunction(this)" id="x3y0"></td>
+								<td onclick="selectFunction(this)" id="x4y0"></td>
+								<td onclick="selectFunction(this)" id="x5y0"></td>
+								<td onclick="selectFunction(this)" id="x6y0"></td>
+							</tr>
+							<tr>
+								<td onclick="selectFunction(this)" id="x0y1"></td>
+								<td onclick="selectFunction(this)" id="x1y1"></td>
+								<td onclick="selectFunction(this)" id="x2y1"></td>
+								<td onclick="selectFunction(this)" id="x3y1"></td>
+								<td onclick="selectFunction(this)" id="x4y1"></td>
+								<td onclick="selectFunction(this)" id="x5y1"></td>
+								<td onclick="selectFunction(this)" id="x6y1"></td>
+							</tr>
+							<tr>
+								<td onclick="selectFunction(this)" id="x0y2"></td>
+								<td onclick="selectFunction(this)" id="x1y2"></td>
+								<td onclick="selectFunction(this)" id="x2y2"></td>
+								<td onclick="selectFunction(this)" id="x3y2"></td>
+								<td onclick="selectFunction(this)" id="x4y2"></td>
+								<td onclick="selectFunction(this)" id="x5y2"></td>
+								<td onclick="selectFunction(this)" id="x6y2"></td>
+							</tr>
+							<tr>
+								<td onclick="selectFunction(this)" id="x0y3"></td>
+								<td onclick="selectFunction(this)" id="x1y3"></td>
+								<td onclick="selectFunction(this)" id="x2y3"></td>
+								<td onclick="selectFunction(this)" id="x3y3"></td>
+								<td onclick="selectFunction(this)" id="x4y3"></td>
+								<td onclick="selectFunction(this)" id="x5y3"></td>
+								<td onclick="selectFunction(this)" id="x6y3"></td>
+							</tr>
+							<tr>
+								<td onclick="selectFunction(this)" id="x0y4"></td>
+								<td onclick="selectFunction(this)" id="x1y4"></td>
+								<td onclick="selectFunction(this)" id="x2y4"></td>
+								<td onclick="selectFunction(this)" id="x3y4"></td>
+								<td onclick="selectFunction(this)" id="x4y4"></td>
+								<td onclick="selectFunction(this)" id="x5y4"></td>
+								<td onclick="selectFunction(this)" id="x6y4"></td>
+							</tr>
+							<tr>
+								<td onclick="selectFunction(this)" id="x0y5"></td>
+								<td onclick="selectFunction(this)" id="x1y5"></td>
+								<td onclick="selectFunction(this)" id="x2y5"></td>
+								<td onclick="selectFunction(this)" id="x3y5"></td>
+								<td onclick="selectFunction(this)" id="x4y5"></td>
+								<td onclick="selectFunction(this)" id="x5y5"></td>
+								<td onclick="selectFunction(this)" id="x6y5"></td>
+							</tr>
+						</table>
+						<input type="hidden" id="monthnow">
+					</div>
 				</div>
 				<div class="detailinf2 detailhiden">
 					<table class="table">

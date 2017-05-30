@@ -28,6 +28,8 @@
 </head>
 <body>
 	<div class="container">
+		<p>&nbsp</p>
+		<p>&nbsp</p>
 		<div class="row col-xs-12 col-sm-12 col-md-12 col-lg-12">
 			<div
 				class="puzzle1 col-xs-offset-2 col-sm-offset-2 col-md-offset-2 col-lg-offset-2 col-xs-3 col-sm-3 col-md-3 col-lg-3">
@@ -55,16 +57,12 @@
 					</div>
 				</div>
 				<div class="form-group">
-					<label class="col-xs-2 col-sm-2 col-md-2 col-lg-2 control-label">可否買斷</label>
+					<label class="col-xs-2 col-sm-2 col-md-2 col-lg-2 control-label">買斷/捐贈</label>
 					<div class="col-xs-8 col-sm-8 col-md-8 col-lg-8">
-						<input type="radio" name="saleboolean" value="yes"> 可 
-  						<input type="radio" name="saleboolean" value="no"> 否
-					</div>
-				</div>
-				<div class="form-group">
-					<label class="col-xs-2 col-sm-2 col-md-2 col-lg-2 control-label">買斷價格</label>
-					<div class="col-xs-8 col-sm-8 col-md-8 col-lg-8">
-						<input type="number" name="saleprice" > 
+						<input type="radio" name="saleboolean" value="no" onchange="resaleInput();"> 無買斷/捐贈
+						<input type="radio" name="saleboolean" id="resaleRadio" value="yes" onchange="resaleInput();" > 可買斷 
+  						<input type="radio" name="saleboolean" value="donate" onchange="resaleInput();">可捐贈
+  						<div id="salepriceDiv"></div>
 					</div>
 				</div>
 				<div class="form-group">
@@ -171,6 +169,22 @@ function submitgoodassign2() {
 	document.getElementById("rentdays").value=selectedString;
 	//alert(selectedString);
     document.getElementById("goodassign2").submit();
+}
+function resaleInput() {
+    if (document.getElementById('resaleRadio').checked == true) {
+        var input = document.createElement("input");
+        input.type = "number";
+        input.placeholder = "請輸入欲賣斷之金額";
+        input.id="salepriceInput";
+        input.name = "saleprice";
+        input.required = "true";
+        document.getElementById("salepriceDiv").appendChild(input);
+    }
+    if (document.getElementById('resaleRadio').checked == false&&document.contains(document.getElementById("salepriceInput"))) {
+        document.getElementById("salepriceInput").remove();
+    }
+   
+   
 }
 </script>
 </html>

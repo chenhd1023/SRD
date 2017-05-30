@@ -99,7 +99,7 @@
 						<div class="button">
 							<input type="hidden" id="imagebase64" name="imagebase64">
 							<input type="hidden" name="action" value="insertThird">
-							<a href="#" class="upload-result">Send</a>
+							<a href="#" class="upload-result">提交</a>
 						</div>
 					</div>
 				</div>

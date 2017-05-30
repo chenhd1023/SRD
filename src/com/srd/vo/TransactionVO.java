@@ -7,6 +7,7 @@ public class TransactionVO {
 	private String seller;
 	private String status;
 	private String productname;
+	private String productOrWanted;
 	public int getIdtransaction() {
 		return idtransaction;
 	}
@@ -42,5 +43,11 @@ public class TransactionVO {
 	}
 	public void setProductname(String productname) {
 		this.productname = productname;
+	}
+	public String getProductOrWanted() {
+		return productOrWanted;
+	}
+	public void setProductOrWanted(String productOrWanted) {
+		this.productOrWanted = productOrWanted;
 	}
 }

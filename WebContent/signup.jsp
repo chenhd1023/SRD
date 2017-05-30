@@ -101,14 +101,14 @@
 					<h3>完成</h3>
 				</div>
 			</div>
-			<div class="row">
+			<!-- <div class="row">
 				<div class="col-xs-offset-2 col-xs-3 connectfb">
 					<a href=""><img src="img/signup/facebook.png"></a>
 				</div>
 				<div class="col-xs-offset-1 col-xs-3 connectgoogle">
 					<a href=""><img src="img/signup/google.png"></a>
 				</div>
-			</div>
+			</div> -->
 			<div class="row table col-xs-12 col-sm-12 col-md-12 col-lg-12">
 				<form class="form-horizontal" role="form" name="form1" id="form1" action="AccountServlet"  method="post">
 					<div class="form-group">

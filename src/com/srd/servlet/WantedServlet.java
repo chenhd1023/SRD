@@ -9,13 +9,18 @@ import java.sql.SQLException;
 import java.sql.Statement;
 import java.util.ArrayList;
 import java.util.List;
+
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+
 import sun.misc.BASE64Decoder;
+
+import com.srd.dao.ProductDAO;
 import com.srd.dao.WantedDAO;
+import com.srd.vo.ProductVO;
 import com.srd.vo.WantedVO;
 
 @WebServlet("/WantedServlet")
@@ -33,31 +38,17 @@ public class WantedServlet  extends HttpServlet{
 			e.printStackTrace();
 		}
 	}
-
-	/**
-	 * @see HttpServlet#HttpServlet()
-	 */
 	public WantedServlet() {
 		super();
-		// TODO Auto-generated constructor stub
 	}
 
-	/**
-	 * @see HttpServlet#doGet(HttpServletRequest request, HttpServletResponse
-	 *      response)
-	 */
 	protected void doGet(HttpServletRequest req, HttpServletResponse resp)
 			throws ServletException, IOException {
 		doPost(req, resp);
 	}
 
-	/**
-	 * @see HttpServlet#doPost(HttpServletRequest request, HttpServletResponse
-	 *      response)
-	 */
 	protected void doPost(HttpServletRequest request,
 			HttpServletResponse response) throws ServletException, IOException {
-		System.out.println("testinservlet");
 		response.setContentType("text/html");
 		request.setCharacterEncoding("UTF-8");
 		String action = request.getParameter("action");
@@ -148,7 +139,7 @@ public class WantedServlet  extends HttpServlet{
 				String crntImage = request.getParameter("imagebase64");
 				BASE64Decoder decode = new BASE64Decoder();
 				byte[] data = decode.decodeBuffer(crntImage.substring(crntImage.indexOf(",")+1));
-				OutputStream stream = new FileOutputStream("C:/Users/Administrator/workspace/srdtest/WebContent/"+fileSavePathString);
+				OutputStream stream = new FileOutputStream("C:/Program Files/Apache Software Foundation/Tomcat 7.0/webapps/srdtest/"+fileSavePathString);
 				stream.write(data);
 				
 				wantedVO.setPicture(fileSavePathString);
@@ -157,17 +148,142 @@ public class WantedServlet  extends HttpServlet{
 				//System.out.println(crntImage);
 				//System.out.println(crntImage.substring(crntImage.indexOf(",")+1));
 				stream.close();
-				request.getSession().setAttribute("name",wantedVO.getName());
-				request.getSession().setAttribute("price",wantedVO.getPrice());
-				request.getSession().setAttribute("picture",wantedVO.getPicture());
-				request.getSession().setAttribute("idwanted",wantedVO.getIdwanted());
-				request.getSession().setAttribute("owner",wantedVO.getOwner());
-				request.getSession().setAttribute("dateStart",wantedVO.getDateStart());
-				request.getSession().setAttribute("dateEnd",wantedVO.getDateEnd());
-				request.getSession().setAttribute("other",wantedVO.getOther());
-				request.getSession().setAttribute("timelimit",wantedVO.getTimelimit());
+				List<WantedVO> wantedVOs = new ArrayList<>();
+				wantedVOs = wantedDAO.queryByNameRtnList(wantedVO);
 				
 				
+		
+				request.getSession().setAttribute("wantedVO",wantedVO);
+				request.getSession().setAttribute("wantedVOs",wantedVOs);
+				request.getSession().setAttribute("url","action=getOneWanted&idwanted="+wantedVO.getIdwanted());
+				response.sendRedirect("bid.jsp");
+			} catch (SQLException e) {
+				e.printStackTrace();
+			} finally {
+				if (stmt != null) {
+					try {
+						stmt.close();
+					} catch (SQLException e) {
+						e.printStackTrace();
+					}
+				}
+				if (conn != null) {
+					try {
+						conn.close();
+					} catch (SQLException e) {
+						e.printStackTrace();
+					}
+				}
+			}
+		}else if ("indexToContent".equals(action)) {
+			loadDriver();
+			Connection conn = null;
+			Statement stmt = null;
+			try {
+				conn = DriverManager.getConnection(url, user, password);
+				String contentType = request.getParameter("contentType");
+				WantedDAO wantedDAO = new WantedDAO(conn);
+				List<WantedVO> wantedVOs = new ArrayList<>();
+				wantedVOs = wantedDAO.queryDistinctName();
+				for (int i = 0; i < wantedVOs.size(); i++) {
+					wantedVOs.set(i,wantedDAO.queryByName(wantedVOs.get(i).getName()));
+				}
+				List<List<WantedVO>> bigWantedVOs = new ArrayList<>();
+				int counter=0;
+				List<WantedVO> tmpVOs = new ArrayList<>();
+				for (int i = 0; i < wantedVOs.size(); i++) {
+					tmpVOs.add(wantedVOs.get(i));
+					counter++;
+					if (counter==4) {
+						bigWantedVOs.add(tmpVOs);
+						tmpVOs=new ArrayList<>();
+						counter=0;
+					}
+				}
+				if (counter>0) {
+					bigWantedVOs.add(tmpVOs);
+				}
+		
+
+				request.getSession().setAttribute("bigWantedVOs",bigWantedVOs);
+				request.getSession().setAttribute("url","action=indexToContent&contentType="+contentType);
+				response.sendRedirect(contentType+".jsp");
+			} catch (SQLException e) {
+				e.printStackTrace();
+			} finally {
+				if (stmt != null) {
+					try {
+						stmt.close();
+					} catch (SQLException e) {
+						e.printStackTrace();
+					}
+				}
+				if (conn != null) {
+					try {
+						conn.close();
+					} catch (SQLException e) {
+						e.printStackTrace();
+					}
+				}
+			}
+		}else if ("getOneWanted".equals(action)) {
+			loadDriver();
+			Connection conn = null;
+			Statement stmt = null;
+			try {
+				conn = DriverManager.getConnection(url, user, password);
+				//String contentType = request.getParameter("contentType");
+				String idwanted = request.getParameter("idwanted");
+				WantedDAO wantedDAO = new WantedDAO(conn);
+				WantedVO wantedVO = new WantedVO();
+				wantedVO = wantedDAO.queryById(idwanted);
+				List<WantedVO> wantedVOs = new ArrayList<>();
+				wantedVOs = wantedDAO.queryByNameRtnList(wantedVO);
+				
+				
+		
+				request.getSession().setAttribute("wantedVO",wantedVO);
+				request.getSession().setAttribute("wantedVOs",wantedVOs);
+				request.getSession().setAttribute("url","action=getOneWanted&idwanted="+wantedVO.getIdwanted());
+				response.sendRedirect("bid.jsp");
+			} catch (SQLException e) {
+				e.printStackTrace();
+			} finally {
+				if (stmt != null) {
+					try {
+						stmt.close();
+					} catch (SQLException e) {
+						e.printStackTrace();
+					}
+				}
+				if (conn != null) {
+					try {
+						conn.close();
+					} catch (SQLException e) {
+						e.printStackTrace();
+					}
+				}
+			}
+		}else if ("addNewPrice".equals(action)) {
+			loadDriver();
+			Connection conn = null;
+			Statement stmt = null;
+			try {
+				conn = DriverManager.getConnection(url, user, password);
+				String idwanted = request.getParameter("idwanted");
+				String accountid = request.getParameter("accountid");
+				String price = request.getParameter("price");
+				WantedDAO wantedDAO = new WantedDAO(conn);
+				WantedVO wantedVO = new WantedVO();
+				wantedVO = wantedDAO.queryById(idwanted);
+				wantedVO.setOwner(accountid);
+				wantedVO.setPrice(price);
+				wantedDAO.addNewPrice(wantedVO);
+				List<WantedVO> wantedVOs = new ArrayList<>();
+				wantedVOs = wantedDAO.queryByNameRtnList(wantedVO);
+				request.getSession().setAttribute("wantedVO",wantedVO);
+				request.getSession().setAttribute("wantedVOs",wantedVOs);
+				request.getSession().setAttribute("url","action=getOneWanted&idwanted="+wantedVO.getIdwanted());
 				response.sendRedirect("bid.jsp");
 			} catch (SQLException e) {
 				e.printStackTrace();

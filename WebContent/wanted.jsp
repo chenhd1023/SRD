@@ -7,7 +7,7 @@
 <c:if test="${'success'!=login}">
 	<%@ include file="navbarlogout.jsp"%>
 </c:if>
-<%@ page import="com.srd.vo.ProductVO"%>
+<%@ page import="com.srd.vo.WantedVO"%>
 <%@ page import="java.util.List"%>
 <!DOCTYPE html>
 <html lang="en">
@@ -24,115 +24,40 @@
 	<script type="text/javascript" src="http://ajax.googleapis.com/ajax/libs/jquery/1.9.1/jquery.min.js"></script>
 	<script type="text/javascript" src="http://ajax.googleapis.com/ajax/libs/jqueryui/1.10.2/jquery-ui.min.js"></script>
 </head>
-<body>
+<script>
+function codeAddress(){
+	var stateObj = { foo: "bar" };
+	history.pushState(stateObj, "page 2", "WantedServlet?${url}");
+}
+</script>
+<body onload="codeAddress();">
 	<div class="header col-xs-12">
 		<div class="col-xs-3">
 		<img src="img/wanted/wantedicon.svg" alt="">
 		</div>
 		<div class="col-xs-6">
-			<a href="">現正懸賞</a><a href="wantedsuccess.html">懸賞成功</a><a href="wantedfail.html">懸賞失敗</a>
+			<a href="WantedServlet?action=indexToContent&contentType=wanted">現正懸賞</a><a href="WantedServlet?action=indexToContent&contentType=wantedsuccess">懸賞成功</a><a href="WantedServlet?action=indexToContent&contentType=wantedfail">懸賞失敗</a>
 		</div>
 		<div class="col-xs-3">
-			<button onclick="window.location.href='wantedassign1.jsp'"><img src="img/wanted/wantedassignicon.svg" alt="">我要懸賞</button>
+			<button onclick="window.location.href='wantedassign1.jsp'"><img src="img/wanted/wantedicon.svg" alt="">我要懸賞</button>
 		</div>
 	</div>
+	
 	<div class="mainpart col-xs-12">
-		<div class="col-xs-3 items">
-			<div class="item">
-				<p>PS4</p>
-				<img src="img/wanted/ps4(3).jpg" alt="">
-				<p>1500元</p>
-				<a href="">出價</a>			
-			</div>
+	<c:forEach var="wantedVOs" items="${bigWantedVOs}">
+		<div class="row">
+			<c:forEach var="vo" items="${wantedVOs}">
+				<div class="col-xs-3 items">
+					<div class="item">
+						<p>${vo.getName()}</p>
+						<img src="${vo.getPicture()}" alt="">
+						<p>${vo.getPrice()}元</p>
+						<a href="WantedServlet?action=getOneWanted&idwanted=${vo.getIdwanted()}">出價</a>			
+					</div>
+				</div>
+			</c:forEach>	
 		</div>
-		<div class="col-xs-3 items">
-			<div class="item">
-				<p>PS4</p>
-				<img src="img/wanted/ps4(3).jpg" alt="">
-				<p>1500元</p>
-				<a href="">出價</a>			
-			</div>
-		</div>
-		<div class="col-xs-3 items">
-			<div class="item">
-				<p>PS4</p>
-				<img src="img/wanted/ps4(3).jpg" alt="">
-				<p>1500元</p>
-				<a href="">出價</a>			
-			</div>
-		</div>
-		<div class="col-xs-3 items">
-			<div class="item">
-				<p>PS4</p>
-				<img src="img/wanted/ps4(3).jpg" alt="">
-				<p>1500元</p>
-				<a href="">出價</a>			
-			</div>
-		</div>
-		<div class="col-xs-3 items">
-			<div class="item">
-				<p>PS4</p>
-				<img src="img/wanted/ps4(3).jpg" alt="">
-				<p>1500元</p>
-				<a href="">出價</a>			
-			</div>
-		</div>
-		<div class="col-xs-3 items">
-			<div class="item">
-				<p>PS4</p>
-				<img src="img/wanted/ps4(3).jpg" alt="">
-				<p>1500元</p>
-				<a href="">出價</a>			
-			</div>
-		</div>
-		<div class="col-xs-3 items">
-			<div class="item">
-				<p>PS4</p>
-				<img src="img/wanted/ps4(3).jpg" alt="">
-				<p>1500元</p>
-				<a href="">出價</a>			
-			</div>
-		</div>
-		<div class="col-xs-3 items">
-			<div class="item">
-				<p>PS4</p>
-				<img src="img/wanted/ps4(3).jpg" alt="">
-				<p>1500元</p>
-				<a href="">出價</a>			
-			</div>
-		</div>
-		<div class="col-xs-3 items">
-			<div class="item">
-				<p>PS4</p>
-				<img src="img/wanted/ps4(3).jpg" alt="">
-				<p>1500元</p>
-				<a href="">出價</a>			
-			</div>
-		</div>
-		<div class="col-xs-3 items">
-			<div class="item">
-				<p>PS4</p>
-				<img src="img/wanted/ps4(3).jpg" alt="">
-				<p>1500元</p>
-				<a href="">出價</a>			
-			</div>
-		</div>
-		<div class="col-xs-3 items">
-			<div class="item">
-				<p>PS4</p>
-				<img src="img/wanted/ps4(3).jpg" alt="">
-				<p>1500元</p>
-				<a href="">出價</a>			
-			</div>
-		</div>
-		<div class="col-xs-3 items">
-			<div class="item">
-				<p>PS4</p>
-				<img src="img/wanted/ps4(3).jpg" alt="">
-				<p>1500元</p>
-				<a href="">出價</a>			
-			</div>
-		</div>
+	</c:forEach>
 	</div>
 
 </body>

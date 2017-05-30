@@ -1,4 +1,6 @@
 eclipse.preferences.version=1
+encoding//WebContent/contentdonate.jsp=UTF-8
+encoding//WebContent/contentresale.jsp=UTF-8
 encoding//WebContent/goods.jsp=UTF-8
 encoding//WebContent/goodsassign.jsp=UTF-8
 encoding//WebContent/login.jsp=UTF-8
@@ -6,3 +8,4 @@ encoding//WebContent/loginfailedid.jsp=UTF-8
 encoding//WebContent/navbarlogin.jsp=UTF-8
 encoding//WebContent/navbarlogout.jsp=UTF-8
 encoding//WebContent/pictureupload.jsp=UTF-8
+encoding//WebContent/selfPage.jsp=UTF-8

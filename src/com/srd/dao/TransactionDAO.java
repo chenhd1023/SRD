@@ -21,8 +21,9 @@ public class TransactionDAO {
 		vo.setIdproduct(rset.getString("idproduct"));
 		vo.setBuyer(rset.getString("buyer"));
 		vo.setSeller(rset.getString("seller"));
-		vo.setIdproduct(rset.getInt("idtransaction") + "");
+		vo.setStatus(rset.getString("status") );
 		vo.setProductname(rset.getString("productname"));
+		vo.setProductOrWanted(rset.getString("productOrWanted"));
 		return vo;
 	}
 
@@ -54,8 +55,8 @@ public class TransactionDAO {
 	public void insert(TransactionVO vo) throws SQLException {
 		PreparedStatement pstmt = null;
 		String sql = "insert into transaction(                           "
-				+ "   idproduct,buyer,seller,status,productname,time "
-				+ "  )  " + "values(       ?,?,?,?,?,now()  )         ";
+				+ "   idproduct,buyer,seller,status,productname,time,productOrWanted "
+				+ "  )  " + "values(       ?,?,?,?,?,now(),?  )         ";
 		try {
 			pstmt = conn.prepareStatement(sql);
 			pstmt.setString(1, vo.getIdproduct());
@@ -63,6 +64,23 @@ public class TransactionDAO {
 			pstmt.setString(3, vo.getSeller());
 			pstmt.setString(4, vo.getStatus());
 			pstmt.setString(5, vo.getProductname());
+			pstmt.setString(6, vo.getProductOrWanted());
+			pstmt.executeUpdate();
+		} catch (Exception e) {
+			throw e;
+		} finally {
+			if (pstmt != null)
+				pstmt.close();
+		}
+	}
+	
+	public void updateStatus(String idtransaction,String status) throws SQLException {
+		PreparedStatement pstmt = null;
+		String sql = "update transaction set status=?  where idtransaction=?    ";
+		try {
+			pstmt = conn.prepareStatement(sql);
+			pstmt.setString(1, status);
+			pstmt.setString(2, idtransaction);
 			pstmt.executeUpdate();
 		} catch (Exception e) {
 			throw e;
@@ -126,6 +144,30 @@ public class TransactionDAO {
 		return result;
 	}
 	
+	public TransactionVO getTransactionByID(String idtransaction) throws SQLException {
+		PreparedStatement pstmt = null;
+		ResultSet rset = null;
+		String sql = "select * from transaction where idtransaction=?  ";
+		TransactionVO result = new TransactionVO();
+		try {
+			pstmt = conn.prepareStatement(sql);
+			pstmt.setString(1, idtransaction);
+
+			rset = pstmt.executeQuery();
+			if (rset.next()) {
+				result = loadData(rset);
+			}
+		} catch (SQLException e) {
+			throw e;
+		} finally {
+			if (rset != null)
+				rset.close();
+			if (pstmt != null)
+				pstmt.close();
+		}
+		return result;
+	}
+	
 	public TransactionVO getLatestTransaction(String accountid)
 			throws SQLException {
 		PreparedStatement pstmt = null;
@@ -136,7 +178,6 @@ public class TransactionDAO {
 			pstmt = conn.prepareStatement(sql);
 			pstmt.setString(1, accountid);
 			pstmt.setString(2, accountid);
-
 			rset = pstmt.executeQuery();
 			if (rset.next()) {
 				result = loadData(rset);

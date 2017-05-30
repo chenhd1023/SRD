@@ -36,7 +36,6 @@ public class ProductDAO {
 		ResultSet rset = null;
 		String sql = "select * from product    " ;
 		List<ProductVO> result = new ArrayList<>();
-		
 		try {
 			pstmt = conn.prepareStatement(sql);
 			///pstmt.setString(1, idproduct);
@@ -45,6 +44,107 @@ public class ProductDAO {
 				ProductVO tmp = new ProductVO();
 				tmp = loadData(rset);
 				result.add(tmp);
+			}
+		} catch (SQLException e) {
+			throw e;
+		} finally {
+			if (rset != null)
+				rset.close();
+			if (pstmt != null)
+				pstmt.close();
+		}
+		return result;
+
+	}
+	
+	public List<ProductVO> queryByContentType(String contentType) throws SQLException {
+		PreparedStatement pstmt = null;
+		ResultSet rset = null;
+		String sql = "select * from product where saleboolean=?" ;
+		List<ProductVO> result = new ArrayList<>();
+		
+		try {
+			pstmt = conn.prepareStatement(sql);
+			if (contentType.equals("contentresale")) {
+				pstmt.setString(1, "yes");
+			} else if(contentType.equals("contentdonate")){
+				pstmt.setString(1, "donate");
+			}
+			rset = pstmt.executeQuery();
+			while (rset.next()) {
+				ProductVO tmp = new ProductVO();
+				tmp = loadData(rset);
+				result.add(tmp);
+			}
+		} catch (SQLException e) {
+			throw e;
+		} finally {
+			if (rset != null)
+				rset.close();
+			if (pstmt != null)
+				pstmt.close();
+		}
+		return result;
+
+	}
+	
+	public List<ProductVO> queryByCatlog(String catalog,String contentType) throws SQLException {
+		PreparedStatement pstmt = null;
+		ResultSet rset = null;
+		String sql = "select * from product where catalog=? " ;
+		List<ProductVO> result = new ArrayList<>();
+		
+		try {
+			pstmt = conn.prepareStatement(sql);
+			pstmt.setString(1, catalog);
+			if (contentType.equals("contentresale")) {
+				sql=sql+"and saleboolean='yes'";
+			} else if(contentType.equals("contentdonate")){
+				sql=sql+"and saleboolean='donate'";
+			}
+			rset = pstmt.executeQuery();
+			while (rset.next()) {
+				ProductVO tmp = new ProductVO();
+				tmp = loadData(rset);
+				result.add(tmp);
+			}
+		} catch (SQLException e) {
+			throw e;
+		} finally {
+			if (rset != null)
+				rset.close();
+			if (pstmt != null)
+				pstmt.close();
+		}
+		return result;
+
+	}
+	
+	public List<List<ProductVO>> queryByAccountid(String accountid) throws SQLException {
+		PreparedStatement pstmt = null;
+		ResultSet rset = null;
+		String sql = "select * from product where owner=?" ;
+		List<ProductVO> smallRow = new ArrayList<>();
+		int smallRowCounter = 0;
+		List<List<ProductVO>> result = new ArrayList<>();
+		try {
+			pstmt = conn.prepareStatement(sql);
+			pstmt.setString(1, accountid);
+			rset = pstmt.executeQuery();
+			
+			while (rset.next()) {
+				ProductVO tmp = new ProductVO();
+				tmp = loadData(rset);
+				smallRow.add(tmp);
+				smallRowCounter++;
+				if (smallRowCounter==3) {
+					result.add(smallRow);
+					smallRowCounter = 0;
+					smallRow = new ArrayList<>();
+				} 
+			}
+			if (smallRowCounter<3) {
+				result.add(smallRow);
 			}
 		} catch (SQLException e) {
 			throw e;
