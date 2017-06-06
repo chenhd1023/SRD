@@ -44,10 +44,10 @@ function codeAddress(){
 				<a href="MessageServlet?action=getSpecificTransaction&transactionid=${vo.getIdtransaction()}&accountid=chenhd" >
 					<div class="items">
 						<h4>
-							商品名稱<span>&nbsp;&nbsp;&nbsp;&nbsp;${vo.getProductname()}</span>
+							<span>&nbsp;&nbsp;&nbsp;&nbsp;${vo.getProductname()}</span>
 						</h4>
 						<h4>
-							賣家ID<span>&nbsp;&nbsp;&nbsp;&nbsp;${vo.getSeller()}</span>
+							<span>&nbsp;&nbsp;&nbsp;&nbsp;${vo.getSeller()}</span>
 						</h4>
 					</div>
 				</a>

@@ -28,6 +28,7 @@ public class ProductDAO {
 		vo.setSaleboolean(rset.getString(8));
 		vo.setSaleprice(rset.getString(9));
 		vo.setPicture1(rset.getString(10));
+		vo.setRentdays(rset.getString("rentdays"));
 		return vo;
 	}
 

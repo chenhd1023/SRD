@@ -233,4 +233,63 @@ public class CommentDAO {
 		}
 		return result;
 	}
+	
+	public float getPersonCommentScore(String targetAccountid) throws SQLException {
+		PreparedStatement pstmt = null;
+		ResultSet rset = null;
+		String sql= "SELECT score FROM srb.comment LEFT JOIN srb.transaction ON comment.idtransaction = transaction.idtransaction where role='buyer' and type='person' and comment.status='done' and seller=?";
+		int i = 0;
+		int score = 0;
+		try {
+			pstmt = conn.prepareStatement(sql);
+			pstmt.setString(1, targetAccountid);
+			rset = pstmt.executeQuery();
+			while (rset.next()) {
+				String tmp ="";
+				tmp=rset.getString(1);
+				System.out.println(tmp);
+				score=score+Integer.parseInt(tmp);
+				System.out.println(score);
+				i++;
+				System.out.println(i);
+			}
+			
+		} catch (Exception e) {
+			throw e;
+		} finally {
+			if (pstmt != null)
+				pstmt.close();
+		}
+		if (i==0) {
+			return -1;
+		} else {
+			return score/i;
+		}
+		
+	}
+	
+	public List<CommentVO> getProductComments(String targetidproduct) throws SQLException {
+		PreparedStatement pstmt = null;
+		ResultSet rset = null;
+		String sql= "SELECT * FROM srb.comment LEFT JOIN srb.transaction ON comment.idtransaction = transaction.idtransaction where role='buyer' and type='product' and comment.status='done' and productOrWanted='product' and idproduct=?";
+		List<CommentVO> result = new ArrayList<>();
+		try {
+			pstmt = conn.prepareStatement(sql);
+			pstmt.setString(1, targetidproduct);
+			rset = pstmt.executeQuery();
+			while (rset.next()) {
+				CommentVO tmp = new CommentVO();
+				tmp = loadData(rset);
+				result.add(tmp);
+			}
+			
+		} catch (Exception e) {
+			throw e;
+		} finally {
+			if (pstmt != null)
+				pstmt.close();
+		}
+			return result;
+		
+	}
 }

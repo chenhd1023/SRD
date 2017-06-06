@@ -18,8 +18,10 @@ import javax.servlet.http.HttpServletResponse;
 
 import sun.misc.BASE64Decoder;
 
+import com.srd.dao.CommentDAO;
 import com.srd.dao.ProductDAO;
 import com.srd.dao.SrbAccountDAO;
+import com.srd.vo.CommentVO;
 import com.srd.vo.ProductVO;
 import com.srd.vo.SrbAccountVO;
 
@@ -77,15 +79,27 @@ public class ProductServlet extends HttpServlet {
 				conn = DriverManager.getConnection(url, user, password);
 				ProductDAO productDAO = new ProductDAO(conn);
 				SrbAccountDAO srbAccountDAO = new SrbAccountDAO(conn);
+				CommentDAO commentDAO = new CommentDAO(conn);
 				ProductVO productVO = new ProductVO();
 				SrbAccountVO srbAccountVO = new SrbAccountVO();
+				float commentPersonScore = 0;
 				String idproduct = request.getParameter("idproduct");
 				productVO = productDAO.query(idproduct);
 				srbAccountVO = srbAccountDAO.getAllStatusByAccountid(productVO.getOwner());
+				commentPersonScore = commentDAO.getPersonCommentScore(productVO.getOwner());
+				List<CommentVO> commentVOs = new ArrayList<>();
+				commentVOs= commentDAO.getProductComments(productVO.getIdproduct()+"");
+				request.getSession().setAttribute("commentVOs", commentVOs);
+				if (commentPersonScore==-1) {
+					request.getSession().setAttribute("commentPersonScore", "尚無相關評價");
+				} else {
+					request.getSession().setAttribute("commentPersonScore", commentPersonScore);
+				}
+				System.out.println(productVO.getRentdays());
 				request.getSession().setAttribute("productVO", productVO);
 				request.getSession().setAttribute("srbAccountVO", srbAccountVO);
 				request.getSession().setAttribute("status", "SUCCESS");
-
+				
 				// conn.commit();
 				response.sendRedirect("goods.jsp");
 			} catch (SQLException e) {
@@ -206,6 +220,17 @@ public class ProductServlet extends HttpServlet {
 				//System.out.println(crntImage);
 				//System.out.println(crntImage.substring(crntImage.indexOf(",")+1));
 				stream.close();
+				CommentDAO commentDAO = new CommentDAO(conn);
+				float commentPersonScore = 0;
+				commentPersonScore = commentDAO.getPersonCommentScore(productVO.getOwner());
+				List<CommentVO> commentVOs = new ArrayList<>();
+				commentVOs= commentDAO.getProductComments(productVO.getIdproduct()+"");
+				request.getSession().setAttribute("commentVOs", commentVOs);
+				if (commentPersonScore==-1) {
+					request.getSession().setAttribute("commentPersonScore", "尚無相關評價");
+				} else {
+					request.getSession().setAttribute("commentPersonScore", commentPersonScore);
+				}
 				request.getSession().setAttribute("name",productVO.getName());
 				request.getSession().setAttribute("saleprice",productVO.getSaleprice());
 				request.getSession().setAttribute("product",productVO.getPrice());
